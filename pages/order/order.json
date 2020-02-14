@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "van-tabs": "@vant/weapp/tabs",
+    "van-tab": "@vant/weapp/tab",
+    "van-button": "@vant/weapp/button",
+    "order": "/component/order/order"
+  }
 }

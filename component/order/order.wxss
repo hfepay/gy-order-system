@@ -1,0 +1,43 @@
+.order-container{
+    background: white;
+    border-radius:10rpx;
+    padding-left: 16rpx;
+    padding-right: 16rpx;
+}
+.order-header{
+    display: flex;
+    height: 99rpx;
+    align-items: center;
+    border-bottom: 1px solid #EEEEEE;
+}
+.order-header .merchant-name{
+    flex: 1;
+    font-weight: bold;
+    font-size:32rpx;
+}
+.order-header .order-status{
+    font-size:28rpx;
+    color:var(--primary)
+}
+.order-header .order-status.order-status__finished{
+    color:#999999
+}
+.title{
+    color: #000000;
+    font-size:32rpx;
+    font-weight: bold;
+}
+.desc{
+    color: #999999;
+    font-size:26rpx;
+    line-height: 50rpx;
+}
+
+.card-bg{
+    background: white;
+    padding-top: 34rpx;
+    padding-bottom: 34rpx;
+}
+.card-thumb{
+    margin-right: 26rpx;
+}

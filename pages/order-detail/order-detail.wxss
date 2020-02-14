@@ -1,0 +1,44 @@
+:host{
+    --black:#000000
+}
+.order-status{
+    font-weight: bold;
+    line-height: 83rpx;
+    font-size:40rpx;
+    color:var(--black);
+    margin-left: 34rpx;
+}
+.cell-title,.cell-value{
+    font-size:32rpx;
+    color: var(--black);
+    font-weight: 400;
+}
+
+.actually-money-info{
+    text-align: right;
+    font-size:32rpx;
+    line-height: 80rpx;
+  padding-right: 34rpx;
+}
+.actually-money-info .actually-money__label{
+  margin-right: 10rpx;
+}
+.actually-money-info .actually-money__value{
+    color: #d60000;
+}
+.btn-container{
+    text-align: center;
+    padding:50rpx 102rpx;
+    /* display: flex!important;
+    justify-content: center; */
+}
+.operate-btn{
+  height: 84rpx!important;
+  margin-bottom: 50rpx;
+}
+
+.card-price{
+    text-align: right;
+    font-size:30rpx;
+    line-height: 108rpx;
+}

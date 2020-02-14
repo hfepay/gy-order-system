@@ -47,7 +47,8 @@ Page({
     this.initMenuList()
   },
   initMenuList(){
-    API.getMenuList({ ...this.data.params, busId: this.data.merchant.id})
+    const params = { ...this.data.params, busId: this.data.merchant.id}
+    API.getMenuList(params)
         .then(res => {
           this.setData({
             menuList: res

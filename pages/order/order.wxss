@@ -1,1 +1,13 @@
 /* pages/order/order.wxss */
+.order-list{
+    margin: 20rpx 32rpx;
+}
+
+.order-item + .order-item{
+    margin-top: 20rpx;
+}
+.pay-btn{
+    font-size: 28rpx!important;
+    height: 58rpx!important;
+    border-radius: 10rpx!important;
+}

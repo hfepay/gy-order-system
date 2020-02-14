@@ -1,0 +1,24 @@
+<view class="order-container">
+    <view class="order-header">
+        <view class="merchant-name">肯德基贵州龙洞堡机场店</view>
+        <view class="order-status">待付款</view>
+    </view>
+    <van-card
+            custom-class="card-bg"
+            thumb-class="card-thumb"
+        thumb="/static/image/icon/ad.png"
+    >
+        <view slot="title" class="title">
+            早餐 08:30
+        </view>
+        <view slot="desc" class="desc">
+            <view>下单时间:2020-02-13  21:58</view>
+            <view>总价:￥144</view>
+            <view>订单编号2019041920011</view>
+        </view>
+        <view slot="footer">
+            <slot></slot>
+        </view>
+    </van-card>
+
+</view>

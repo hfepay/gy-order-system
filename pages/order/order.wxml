@@ -1,2 +1,20 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<van-tabs bind:click="onTabClick">
+    <van-tab title="待完成"></van-tab>
+    <van-tab title="已完成"></van-tab>
+</van-tabs>
+<view class="order-list">
+    <view class="order-item" wx:for="{{3}}">
+        <navigator url="/pages/order-detail/order-detail">
+            <order >
+                <van-button
+                        type="primary"
+                        custom-class="pay-btn"
+                        wx:if="index === 2">
+                    立即支付
+                </van-button>
+            </order>
+        </navigator>
+    </view>
+
+</view>

@@ -1,0 +1,44 @@
+<view>
+    <view class="order-status">订单已下单</view>
+    <van-cell-group>
+        <navigator url="/pages/feedback-order/feedback-order">
+            <van-cell title="订单编号" value-class="fs28" value="2019041920011">
+                <van-icon slot="right-icon" name="question-o" />
+            </van-cell>
+        </navigator>
+    </van-cell-group>
+    <van-cell-group custom-class="mt20 mb20">
+        <van-cell title="机场T1航站楼调度室1楼" desc-class="fs28" label="张汇峰   130****1003"/>
+        <van-cell title="配送时间" value-class="fs28" value="2020-02-12 早餐 8:00"/>
+    </van-cell-group>
+    <van-cell-group>
+        <van-cell title="肯德基贵州龙洞堡机场店"/>
+        <van-card
+            wx:for="{{2}}"
+            title="香辣鸡腿堡套餐"
+            custom-class="content-bg bb1"
+            thumb="/static/image/logo/logo.png"
+        >
+            <view slot="desc" class="card-price">
+                <text>￥72.0</text>
+            </view>
+            <view slot="bottom">
+                <text style="color: #999999;font-size: 30rpx">X1</text>
+            </view>
+        </van-card>
+    </van-cell-group>
+    <van-cell-group>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="下单时间" value="2020-02-13 11:11:11"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="2020-02-13 11:11:11"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥144.00"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥44.00"/>
+    </van-cell-group>
+    <view class="actually-money-info fs32 content-bg">
+        <text class="actually-money__label">实付款:</text>
+        <text class="actually-money__value">￥100.00</text>
+    </view>
+    <view class="btn-container content-bg">
+        <van-button custom-class="operate-btn" block round type="primary">已取餐</van-button>
+        <van-button custom-class="operate-btn"  block round>取消订单</van-button>
+    </view>
+</view>

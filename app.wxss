@@ -3,6 +3,7 @@ page{
   --grey:#999999;
   --primary:#01729E;
   --button-primary-background-color: var(--primary);
+  --tabs-bottom-bar-color: var(--primary);
   --submit-bar-background-color: var(--primary);
   --button-primary-border-color:var(--primary);
   --picker-action-text-color:var(--primary);
@@ -28,7 +29,7 @@ page{
 .submit-btn-container{
   box-sizing: border-box;
   padding: 0 50rpx;
-  width: calc(100vw - 100rpx);
+  width: 100%;
 }
 .submit-btn-container__fixed{
   position: absolute;
@@ -47,6 +48,20 @@ page{
   color:var(--black);
 }
 
+
+.mt20{
+  margin-top: 20rpx;
+}
+
+.mb20{
+  margin-bottom: 20rpx;
+}
+.fs32{
+  font-size: 32rpx;
+}
+.fs28{
+  font-size: 28rpx;
+}
   /* 覆盖vant css */
 .van-cell__title{
   font-weight: bold;

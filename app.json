@@ -1,17 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/order-detail/order-detail",
+    "pages/order/order",
+    "pages/menu/menu",
     "pages/feedback-order/feedback-order",
     "pages/merchant-list/merchant-list",
-    "pages/menu/menu",
     "pages/my/my",
     "pages/edit_address/edit_address",
     "pages/my_info/my_info",
     "pages/feedback-success/feedback-success",
     "pages/address/address",
     "pages/feedback/feedback",
-    "pages/login/login",
-    "pages/order/order"
+    "pages/login/login"
   ],
   "tabBar": {
     "selectedColor":"#01729E",
