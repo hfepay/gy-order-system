@@ -1,0 +1,29 @@
+<!--pages/address/address.wxml-->
+<view class="submit-btn-container" style="margin:20rpx 0">
+  <navigator url="/pages/edit_address/edit_address">
+    <van-button type="primary" block round>新增地址</van-button>
+  </navigator>
+</view>
+
+<view class="address-list">
+    <view class="address-item">
+        <view class="address-detail">
+            <view class="address">机场T1航站楼调度室1楼</view>
+            <view class="userinfo">张汇峰   130****1003</view>
+        </view>
+        <view class="edit">
+          <navigator url="/pages/add_address/add_address?id=1">
+            `<image mode="aspectFill" src="/static/image/icon/edit.png"></image>`
+          </navigator>
+        </view>
+    </view>
+    <view class="address-item">
+        <view class="address-detail">
+            <view class="address">机场T1航站楼调度室1楼</view>
+            <view class="userinfo">张汇峰   130****1003</view>
+        </view>
+        <view class="edit">
+            <image mode="aspectFill" src="/static/image/icon/edit.png"></image>
+        </view>
+    </view>
+</view>

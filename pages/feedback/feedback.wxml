@@ -1,0 +1,12 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+  <view class="row logo-airport">
+    <image mode="aspectFill" src="/static/image/logo/logo-airport.png"></image>
+  </view>
+  <view class="input-container">
+    <textarea placeholder="请输入您的建议或投诉内容"></textarea>
+  </view>
+  <view class="submit-btn-container">
+    <van-button type="primary" block round bindtap="submit">保存</van-button>
+  </view>
+</view>

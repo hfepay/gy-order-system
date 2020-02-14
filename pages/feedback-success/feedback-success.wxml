@@ -1,0 +1,13 @@
+<!--pages/feedback-success/feedback-success.wxml-->
+<view class="content content-bg mt__primary">
+    <view class="icon-container">
+        <image mode="aspectFill" src="/static/image/icon/success.png"></image>
+    </view>
+    <view class="feedback-result">反馈成功</view>
+    <view class="feedback-desc">感谢您的反馈，我们会认真处理您的反馈信息</view>
+</view>
+<view class="submit-btn-container submit-btn-container__fixed">
+    <navigator url="/pages/index/index" open-type="switchTab">
+        <van-button type="primary" block round>返回首页</van-button>
+    </navigator>
+</view>

@@ -1,0 +1,128 @@
+.menu-container{
+    margin: 0 32rpx;
+}
+.merchant-item{
+    height: 258rpx;
+    display: flex;
+    align-items: center;
+}
+.merchant-item .merchant-image{
+    margin: 0 32rpx;
+}
+.merchant-item .merchant-image image{
+    width: 170rpx;
+    height: 170rpx;
+}
+.merchant-item .merchant-desc{
+    line-height: 50rpx;
+    flex: 1;
+}
+.merchant-item .merchant-desc .merchant-name{
+    line-height: 65rpx;
+    font-size:32rpx;
+    font-weight:bold;
+    color: var(--black);
+}
+.merchant-item .merchant-desc .merchant-sell-num,.merchant-meal-type{
+    line-height: 44rpx;
+    font-size:28rpx;
+    color: var(--grey);
+}
+.submit-button--round{
+    border-radius: 999px
+}
+.submit-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 98rpx;
+    color: white;
+    padding: 0 32rpx;
+    z-index: 111;
+}
+.icon-container{
+  position: relative;
+}
+.total-price-info{
+    flex: 1;
+    text-align: right;
+    font-size:30rpx;
+    padding-right: 31rpx;
+}
+.total-price__text{
+
+}
+.total-price__num{}
+.submit-btn{}
+.panel-header{
+    display: flex;
+    height: 80rpx;
+    align-items: center;
+    padding: 0 35rpx;
+}
+.panel-header .panel-header__left{
+    font-size:32rpx;
+    font-weight: bold;
+    color: var(--black);
+    flex: 1;
+}
+.panel-header .panel-header__right{
+    font-size:28rpx;
+    color: var(--grey);
+}
+.commodity-list{
+    margin-bottom: 98rpx;
+}
+.commodity-list .commodity-item{
+    display: flex;
+    height: 196rpx;
+    align-items: center;
+    padding: 0 36rpx;
+}
+.commodity-list .commodity-item .commodity-img{
+    height: 138rpx;
+    width: 138rpx;
+}
+.commodity-list .commodity-item .commodity-img image{
+    width: 100%;
+    height: 100%;
+}
+.commodity-info{
+    margin-left: 23rpx;
+    flex:1;
+    height: 138rpx;
+}
+.commodity-info .commodity-info__name{}
+.commodity-info .commodity-info__price__num{
+    font-size:30rpx;
+    color: #E12E41;
+    display: flex;
+    margin-top: 36rpx;
+}
+.commodity-info .commodity-info__price__num .commodity-info__price{
+  line-height: 56rpx;
+}
+.commodity-info .commodity-info__price__num .commodity-info__num{
+  flex: 1;
+  text-align: right;
+}
+
+.stepper-input{
+  border-radius: 50%!important;
+  background-color:transparent!important;
+  color: var(--black)!important;
+}
+.stepper-icon{
+    border-radius: 50%!important;
+}
+.stepper-icon__plus{
+  background-color: #E12E41!important;
+  color:white!important;
+}
+.stepper-icon__minus{
+    background-color:white!important;
+    border:1px solid #c8c9cc!important;
+}

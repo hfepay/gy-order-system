@@ -1,0 +1,45 @@
+/* pages/login/login.wxss */
+view{
+  --text-color:black;
+}
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 86rpx 94rpx;
+  box-sizing: content-box;
+}
+.login-container .row{
+  display: inline-block
+}
+.logo-airport image{
+  width: 275rpx;
+  height: 229rpx;
+}
+.logo{
+  margin: 30rpx auto;
+}
+.logo image{
+  width: 563rpx;
+  height: 393rpx;
+}
+.name{
+  font-size:54rpx;
+  line-height:101rpx;
+  color:var(--text-color);
+}
+.login-btn{
+  color: white;
+  border-radius: 42rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  margin-top: 43rpx;
+  font-weight: bold;
+}
+.airport-name{
+  font-size:45rpx;
+  color:var(--text-color);
+  line-height:91rpx;
+  font-weight:bold;
+}

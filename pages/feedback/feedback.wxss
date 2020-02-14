@@ -1,0 +1,18 @@
+/* pages/feedback/feedback.wxss */
+.container{
+  padding-top: 78rpx;
+}
+.logo-airport{
+  text-align: center;
+}
+.logo-airport image{
+  width: 275rpx;
+  height: 229rpx;
+}
+.input-container{
+  margin: 64rpx 42rpx 71rpx 53rpx;
+  background-color: white;
+}
+.input-container textarea{
+  height: 579rpx;
+}

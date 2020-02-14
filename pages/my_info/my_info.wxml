@@ -1,0 +1,59 @@
+<!--pages/my_info/my_info.wxml-->
+<view class="container mt__primary">
+  <van-cell-group>
+    <van-field
+      value="{{ username3 }}"
+      label="会员姓名"
+      placeholder="请填写正确会员姓名"
+      input-align="right"
+    />
+    <van-cell title="会员类别" value="请选择" is-link bind:click="selectVIPType"/>
+    <van-field
+      value="{{ username3 }}"
+      label="所属单位"
+      placeholder="请填写所属单位"
+      input-align="right"
+    />
+    <van-field
+      value="{{ username3 }}"
+      label="所属部门"
+      placeholder="请填写正确一级部门"
+      input-align="right"
+    />
+    <van-field
+      value="{{ username3 }}"
+      label="员工工号"
+      placeholder="请填写正确员工工号"
+      input-align="right"
+    />
+    <van-field
+      value="{{ username3 }}"
+      label="联系方式"
+      placeholder="请填写正确手机号"
+      input-align="right"
+    />
+    <van-field
+      value="{{ username3 }}"
+      label="身份证号"
+      placeholder="请填写正确身份证号"
+      input-align="right"
+    />
+  </van-cell-group>
+</view>
+<view class="submit-btn-container submit-btn-container__fixed">
+  <van-button type="primary" block round>保存</van-button>
+</view>
+
+<van-popup
+    show="{{ show }}"
+    position="bottom"
+    bind:close="onClose"
+>
+  <van-picker
+          show-toolbar="true"
+          columns="{{ VIPTypeList }}"
+          value-key="name"
+          bind:cancel="onCancel"
+          bind:confirm="onConfirm"
+  />
+</van-popup>

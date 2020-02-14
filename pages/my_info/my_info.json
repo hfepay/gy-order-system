@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "我的资料",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-field": "@vant/weapp/field",
+    "van-picker": "@vant/weapp/picker",
+    "van-popup": "@vant/weapp/popup",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-cell": "@vant/weapp/cell"
+  }
+}

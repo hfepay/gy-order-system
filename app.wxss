@@ -1,0 +1,57 @@
+page{
+  --black:black;
+  --grey:#999999;
+  --primary:#01729E;
+  --button-primary-background-color: var(--primary);
+  --submit-bar-background-color: var(--primary);
+  --button-primary-border-color:var(--primary);
+  --picker-action-text-color:var(--primary);
+  background: #F6F7F9;
+  min-height: calc(100vh - 20rpx);
+}
+.mt__primary{
+  margin-top: 20rpx;
+}
+.primary{
+  color: var(--primary);
+}
+.container{
+  box-sizing: content-box;
+}
+.bg-primary{
+  background-color: var(--primary);
+}
+.bb1{
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.submit-btn-container{
+  box-sizing: content-box;
+  padding: 0 102rpx;
+  width: calc(100vw - 204rpx);
+}
+.submit-btn-container__fixed{
+  position: absolute;
+  bottom: 146rpx;
+}
+.content-bg{
+  background-color: white;
+}
+.row{
+  display: flex;
+}
+
+.label{
+  font-size:32rpx;
+  font-weight: bold;
+  color:var(--black);
+}
+
+  /* 覆盖vant css */
+.van-cell__title{
+  font-weight: bold;
+}
+.van-grid-item__content{
+  padding-top:15rpx!important;
+  padding-bottom:15rpx!important;
+}

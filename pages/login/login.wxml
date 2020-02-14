@@ -1,0 +1,16 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <view class="row logo-airport">
+    <image mode="aspectFill" src="/static/image/logo/logo-airport.png"></image>
+  </view>
+  <view class="row airport-name">贵州省机场集团</view>
+  <view class="row logo">
+    <image mode="aspectFill" src="/static/image/logo/logo.png"></image>
+  </view>
+  <view class="row name">易订餐</view>
+  <login bind:login="login">
+    <view class="login-btn bg-primary">
+    微信用户一键登录
+  </view>
+  </login>
+</view>

@@ -1,0 +1,4 @@
+/* pages/my_info/my_info.wxss */
+.submit-btn{
+  border-radius: 40rpx;
+}

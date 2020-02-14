@@ -1,0 +1,34 @@
+/* pages/my/my.wxss */
+.user-info{
+  display: flex;
+  padding: 40rpx 20rpx;
+  background: white;
+}
+
+.user-info .avatar{
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+  border-radius: 50%;
+  overflow: hidden;
+  width: 116rpx;
+  height: 116rpx;
+}
+.user-info .detail{
+  margin-left: 33rpx;
+}
+.user-info .detail .username{
+  font-size:32rpx;
+  font-weight:bold;
+  color:rgba(0,0,0,1);
+  line-height:55rpx;
+}
+.user-info .detail .wechat{
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+  line-height:55rpx;
+}
+.cell-container{
+  margin: 20rpx 0;
+}
+.logout{
+  font-weight:bold
+}

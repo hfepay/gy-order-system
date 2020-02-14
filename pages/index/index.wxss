@@ -1,0 +1,94 @@
+.ads{
+    margin: 10rpx 24rpx 10rpx 21rpx
+}
+.ads image{
+    width: 705rpx;
+    height: 153rpx;
+}
+.icon-container{}
+ image.selected-icon{
+    width: 70rpx;
+    height: 70rpx;
+}
+.select-store,.select-date{
+    line-height:91rpx;
+    align-items: center;
+    padding-left: 48rpx;
+    padding-right: 37rpx;
+}
+.label{
+    font-size:32rpx;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+    margin-left: 20rpx;
+}
+.select-tips{
+    font-size:28rpx;
+    flex: 1;
+    text-align: right;
+    color:rgba(153,153,153,1);
+}
+.time{
+    color:rgba(153,153,153,1);
+    font-size:24rpx;
+    height: 95rpx;
+    width: 95rpx;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+}
+.time.selected{
+    background-color: var(--primary);
+    color: white;
+}
+.time .time-week{
+  margin-top: 14rpx;
+}
+.time .time-date{}
+
+.meal-list{}
+.meal-list .meal-item{
+    height: 168rpx;
+    padding-left: 58rpx;
+    padding-right: 28rpx;
+    margin-top: 20rpx;
+    align-items: center;
+}
+.meal-list .meal-item .meal-icon{
+    width: 55rpx;
+    height: 71rpx;
+}
+.meal-list .meal-item .meal-icon.meal-icon__breakfast{
+    width: 55rpx;
+    height: 71rpx;
+}
+.meal-list .meal-item .meal-icon.meal-icon__lunch{
+    width: 66rpx;
+    height: 54rpx;
+}
+.meal-list .meal-item .meal-icon.meal-icon__dinner{
+    width: 71rpx;
+    height: 65rpx;
+}
+.meal-list .meal-detail{
+    flex:1;
+    line-height: 50rpx;
+    margin-left: 27rpx;
+}
+.meal-list .meal-detail .meal__name__time{
+    color: var(--black);
+    font-weight:bold;
+    font-size:32rpx;
+}
+.meal-list .meal-detail .meal__desc{
+    color: var(--grey);
+    font-size:28rpx;
+}
+.meal-list .meal-status{
+    color:var(--primary);
+    font-size:28rpx;
+}
+.arrow-content {
+    /*display: flex;
+    justify-content: right;*/
+}

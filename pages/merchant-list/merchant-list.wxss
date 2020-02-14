@@ -1,0 +1,27 @@
+/* pages/merchant-list/merchant-list.wxss */
+.merchant-list{}
+.merchant-list .merchant-item{
+    height: 258rpx;
+    display: flex;
+    align-items: center;
+}
+.merchant-list .merchant-item .merchant-image{
+    margin: 0 32rpx;
+}
+.merchant-list .merchant-item .merchant-image image{
+    width: 170rpx;
+    height: 170rpx;
+}
+.merchant-list .merchant-item .merchant-desc{
+    line-height: 85rpx;
+    flex: 1;
+}
+.merchant-list .merchant-item .merchant-desc .merchant-name{
+    font-size:32rpx;
+    font-weight:bold;
+    color: var(--black);
+}
+.merchant-list .merchant-item .merchant-desc .merchant-sell-num{
+    font-size:28rpx;
+    color: var(--grey);
+}

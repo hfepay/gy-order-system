@@ -1,0 +1,84 @@
+<!--pages/menu/menu.wxml-->
+<view class="menu-container mt__primary">
+    <view class="merchant-item bb1 content-bg">
+        <view class="merchant-image">
+            <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
+        </view>
+        <view class="merchant-desc">
+            <view class="merchant-name">麦当劳贵州龙洞堡机场店</view>
+            <view class="merchant-sell-num">已售1000份</view>
+            <view class="merchant-meal-type">早餐菜品</view>
+        </view>
+    </view>
+    <view class="menu-list mt__primary ">
+        <van-card
+                custom-class="content-bg bb1"
+                wx:for="{{3}}"
+                wx:key="{{index}}"
+            num="1"
+            price="2.00"
+            origin-price="1.00"
+            desc="库存60"
+            title="香辣鸡腿堡套餐"
+            thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
+        >
+            <view slot="footer">
+                <image mode="aspectFill" src="/static/image/icon/add.png" style="width: 48rpx;height: 48rpx"></image>
+            </view>
+        </van-card>
+    </view>
+</view>
+<view class="submit-bar bg-primary">
+    <view class="icon-container" bindtap="showShoppingCart">
+    <image mode="aspectFill" src="/static/image/icon/shopping-cart.png" style="width: 93rpx;height: 62rpx;"></image>
+    <van-info info="{{9}}">
+    </van-info>
+   </view>
+    <view class="total-price-info">
+        <text class="total-price__text">合计:</text>
+        <text class="total-price__num">72.0元</text>
+    </view>
+    <view class="submit-btn">
+        <van-button round size="small" plain type="primary">提交订单</van-button>
+    </view>
+</view>
+
+<van-popup
+    show="{{ showShoppingCart }}"
+    position="bottom"
+>
+    <van-panel>
+        <view slot="header" class="panel-header">
+            <view class="panel-header__left">已选商品</view>
+            <view class="panel-header__right">清空购物车</view>
+        </view>
+        <view class="commodity-list">
+            <view
+                wx:for="{{3}}"
+                class="commodity-item content-bg bb1">
+                <view class="commodity-img">
+                    <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
+                </view>
+                <view class="commodity-info">
+                    <view class="commodity-info__name label">香辣鸡腿堡套餐</view>
+                    <view class="commodity-info__price__num">
+                        <view class="commodity-info__price">
+                            ￥72.0
+                        </view>
+                        <view class="commodity-info__num">
+                            <van-stepper
+                                    input-class="stepper-input"
+                                    plus-class="stepper-icon stepper-icon__plus"
+                                    minus-class="stepper-icon stepper-icon__minus"
+                                    value="{{ 1 }}"
+                                    bind:change="commodityNumChange"
+                                    disable-input="{{true}}"
+                            />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </van-panel>
+</van-popup>
+

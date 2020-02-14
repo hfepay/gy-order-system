@@ -1,0 +1,14 @@
+<!--pages/merchant-list/merchant-list.wxml-->
+<view class="mt__primary merchant-list content-bg">
+    <navigator url="/pages/index/index">
+     <view wx:for="{{3}}" class="merchant-item bb1">
+        <view class="merchant-image">
+            <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
+        </view>
+        <view class="merchant-desc">
+            <view class="merchant-name">麦当劳贵州龙洞堡机场店</view>
+            <view class="merchant-sell-num">已售1000份</view>
+        </view>
+     </view>
+    </navigator>
+</view>

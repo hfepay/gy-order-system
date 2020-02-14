@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-card": "@vant/weapp/card",
+    "van-button": "@vant/weapp/button",
+    "van-info": "@vant/weapp/info",
+    "van-popup": "@vant/weapp/popup",
+    "van-panel": "@vant/weapp/panel",
+    "van-stepper": "@vant/weapp/stepper"
+  }
+}

@@ -1,0 +1,35 @@
+/* pages/address/address.wxss */
+.address-list{
+  background-color: white;
+}
+.address-list .address-item{
+  display: flex;
+  align-items: center;
+  height: 155rpx;
+  padding: 0 38rpx;
+}
+
+.address-list .address-item .address-detail{
+  flex: 1;
+}
+.address-item + .address-item{
+  border-top: 1rpx solid rgba(238,238,238,1);
+}
+.address-list .address-item .address-detail .address{
+font-size:32rpx;
+font-weight:bold;
+color:rgba(0,0,0,1);
+line-height:55rpx;
+}
+.address-list .address-item .address-detail .userinfo{
+  font-size:28rpx;
+  color:rgba(0,0,0,1);
+}
+
+.address-list .edit{
+  width: 50px;
+}
+.address-list .edit image{
+  width: 50rpx;
+  height: 50rpx;
+}

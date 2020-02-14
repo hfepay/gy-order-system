@@ -1,0 +1,24 @@
+/* pages/feedback-success/feedback-success.wxss */
+.content{
+    height: 551rpx;
+    padding-top: 67rpx;
+}
+.content view{
+    text-align: center;
+}
+.content .icon-container{}
+.content .icon-container image{
+    width: 160rpx;
+    height: 160rpx;
+}
+.content .feedback-result{
+    font-size:32rpx;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+    margin: 35rpx 0;
+}
+.content .feedback-desc{
+    color:rgba(199,199,199,1);
+    font-size:28rpx;
+    margin-top: 13rpx;
+}
