@@ -16,7 +16,7 @@ page{
   color: var(--primary);
 }
 .container{
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 .bg-primary{
   background-color: var(--primary);
@@ -26,9 +26,9 @@ page{
 }
 
 .submit-btn-container{
-  box-sizing: content-box;
-  padding: 0 102rpx;
-  width: calc(100vw - 204rpx);
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  width: calc(100vw - 100rpx);
 }
 .submit-btn-container__fixed{
   position: absolute;
@@ -54,4 +54,9 @@ page{
 .van-grid-item__content{
   padding-top:15rpx!important;
   padding-bottom:15rpx!important;
+}
+.textarea-placeholder{
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+  line-height: 38rpx;
 }

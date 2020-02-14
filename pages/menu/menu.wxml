@@ -7,7 +7,7 @@
         <view class="merchant-desc">
             <view class="merchant-name">{{merchant.businessName}}</view>
             <view class="merchant-sell-num">已售{{merchant.saledNum}}份</view>
-            <view class="merchant-meal-type">早餐菜品todo</view>
+            <view class="merchant-meal-type">{{merchant.description}}</view>
         </view>
     </view>
     <van-divider wx:if="{{menuList.length === 0}}" content-position="center">暂无数据</van-divider>
@@ -52,7 +52,14 @@
     <van-panel>
         <view slot="header" class="panel-header">
             <view class="panel-header__left">已选商品</view>
-            <view class="panel-header__right">清空购物车</view>
+            <view class="panel-header__right">
+                <image mode="aspectFill"
+                       src="/static/image/icon/ashcan.png"
+                       style="width: 34rpx;height: 34rpx;margin-right: 10rpx;vertical-align: text-bottom;">
+
+                </image>
+                清空购物车
+            </view>
         </view>
         <view class="commodity-list">
             <merchandise

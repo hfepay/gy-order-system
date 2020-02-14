@@ -1,0 +1,19 @@
+/* pages/feedback-order/feedback-order.wxss */
+.container{
+    margin: 0rpx 42rpx 71rpx 53rpx;
+}
+.order-number{
+    margin-top: 29rpx;
+    font-size:32rpx;
+    font-weight:bold;
+    color:var(--black);
+}
+
+.input-container{
+    margin-top: 31rpx;
+    background-color: white;
+    padding: 20rpx 19rpx;
+}
+.input-container textarea{
+    height: 579rpx;
+}

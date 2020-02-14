@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/feedback-order/feedback-order",
     "pages/merchant-list/merchant-list",
     "pages/menu/menu",
     "pages/my/my",
