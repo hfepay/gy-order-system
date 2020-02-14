@@ -1,6 +1,6 @@
 <!--pages/feedback/feedback.wxml-->
 <view class="container">
-  <view class="row logo-airport">
+  <view class="logo-airport">
     <image mode="aspectFill" src="/static/image/logo/logo-airport.png"></image>
   </view>
   <view class="input-container">

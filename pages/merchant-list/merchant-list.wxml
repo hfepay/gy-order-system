@@ -1,14 +1,13 @@
 <!--pages/merchant-list/merchant-list.wxml-->
-<view class="mt__primary merchant-list content-bg">
-    <navigator url="/pages/index/index">
-     <view wx:for="{{3}}" class="merchant-item bb1">
+<van-divider wx:if="{{list.length === 0}}" content-position="center">暂无数据</van-divider>
+<view wx:else class="mt__primary merchant-list content-bg">
+     <view wx:for="{{list}}" wx:key="index" class="merchant-item bb1" bindtap="chooseMerchant" data-item="{{item}}">
         <view class="merchant-image">
-            <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
+            <image mode="aspectFill" src="{{item.logoImg}}"></image>
         </view>
         <view class="merchant-desc">
-            <view class="merchant-name">麦当劳贵州龙洞堡机场店</view>
-            <view class="merchant-sell-num">已售1000份</view>
+            <view class="merchant-name">{{item.businessName}}</view>
+            <view class="merchant-sell-num">已售{{item.saledNum}}份</view>
         </view>
      </view>
-    </navigator>
 </view>

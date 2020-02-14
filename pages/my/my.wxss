@@ -1,7 +1,7 @@
 /* pages/my/my.wxss */
 .user-info{
   display: flex;
-  padding: 40rpx 20rpx;
+  padding: 40rpx 49rpx;
   background: white;
 }
 
@@ -21,7 +21,7 @@
   color:rgba(0,0,0,1);
   line-height:55rpx;
 }
-.user-info .detail .wechat{
+.user-info .detail .phone{
   font-size:28rpx;
   color:rgba(153,153,153,1);
   line-height:55rpx;

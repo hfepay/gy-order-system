@@ -12,8 +12,8 @@
             <view class="userinfo">张汇峰   130****1003</view>
         </view>
         <view class="edit">
-          <navigator url="/pages/add_address/add_address?id=1">
-            `<image mode="aspectFill" src="/static/image/icon/edit.png"></image>`
+          <navigator url="/pages/edit_address/edit_address?id=1">
+            <image mode="aspectFill" src="/static/image/icon/edit.png"></image>
           </navigator>
         </view>
     </view>

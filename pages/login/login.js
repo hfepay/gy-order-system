@@ -1,5 +1,6 @@
 // pages/login/login.js
 const API = require('../../utils/api')
+const app = getApp()
 Page({
 
   /**
@@ -9,15 +10,20 @@ Page({
 
   },
   login: function(e){
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
-    return
     API.login(e.detail)
         .then(res => {
+          app.globalData.userInfo = res
           wx.switchTab({
             url: '/pages/index/index',
           })
+        })
+        .catch(err => {
+          if (err.code === 1003){
+            const { openid, session_key} = err.data
+            wx.redirectTo({
+              url: `/pages/my_info/my_info?type=regist&openId=${openid}&session_key=${session_key}`,
+            })
+          }
         })
   },
   /**

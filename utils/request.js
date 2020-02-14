@@ -1,5 +1,5 @@
-import Api from "./api"
 import { config } from './config.js'
+import { getToken } from './util'
 const BASEURL = config.BASEURL
 const request = {
   get:function (url,data) {
@@ -43,9 +43,6 @@ const request = {
   }
 }
 
-const getToken = function () {
-  return wx.getStorageSync('token')
-}
 const logout = () => {
   // 退出登录 清除token 用户信息
   //app.globalData.userInfo = null
@@ -73,15 +70,15 @@ const requestDefault = function (url = '', data, methods, header){
   options.header = {...header,}
   const token = getToken()
   if(token){
-    options.header.Authorization = token
+    options.header.baseToken = token
   }
   let msg = ''
   return getPromiseInstance((resolve, reject) => wx.request({
     ...options,
     success:function (res) {
       console.log(`返回数据:`, res.data)
-      if(res.statusCode === 200 && (res.data.code == 1 || res.data.access_token)){
-        resolve(res.data.access_token ? res.data : res.data.data)
+      if(res.statusCode === 200 && res.data.code == 1 ){
+        resolve(res.data.data)
       }else{
         if(res.data.code == 698 || res.data.code == 699){
           logout()
@@ -131,5 +128,5 @@ const wxlogin = () => {
 }
 
 module.exports ={
-  request, getPromiseInstance, wxlogin, tooltips, getToken
+  request, getPromiseInstance, wxlogin, tooltips
 }

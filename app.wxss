@@ -35,7 +35,7 @@ page{
   bottom: 146rpx;
 }
 .content-bg{
-  background-color: white;
+  background-color: white!important;
 }
 .row{
   display: flex;

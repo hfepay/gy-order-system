@@ -1,14 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/menu/menu",
     "pages/merchant-list/merchant-list",
+    "pages/menu/menu",
+    "pages/my/my",
     "pages/edit_address/edit_address",
     "pages/my_info/my_info",
     "pages/feedback-success/feedback-success",
     "pages/address/address",
     "pages/feedback/feedback",
-    "pages/my/my",
     "pages/login/login",
     "pages/order/order"
   ],
@@ -19,18 +19,18 @@
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "static/image/tabbar/home.png",
-        "selectedIconPath": "static/image/tabbar/home.png"
+        "selectedIconPath": "static/image/tabbar/home-selected.png"
       },
       {
         "pagePath": "pages/order/order",
         "text": "订单",
         "iconPath": "static/image/tabbar/order.png",
-        "selectedIconPath": "static/image/tabbar/order.png"
+        "selectedIconPath": "static/image/tabbar/order-selected.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "static/image/tabbar/my-selected.png",
+        "iconPath": "static/image/tabbar/my.png",
         "selectedIconPath": "static/image/tabbar/my-selected.png"
       }
     ]

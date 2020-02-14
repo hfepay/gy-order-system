@@ -10,7 +10,7 @@
   <view class="row name">易订餐</view>
   <login bind:login="login">
     <view class="login-btn bg-primary">
-    微信用户一键登录
-  </view>
+      微信用户一键登录
+    </view>
   </login>
 </view>

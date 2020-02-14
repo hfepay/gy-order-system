@@ -1,14 +1,31 @@
 // pages/menu/menu.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showShoppingCart: false
+    merchant: {},
+    params: {
+      distributionType: '',
+      day: ''
+    },
+    showShoppingCart: false,
+    menuList: [],
+    commodityList: [
+      {img: '/static/image/icon/ad.png',name: '香辣鸡腿堡套餐', money: '72.0', count: 2},
+      {img: '/static/image/icon/ad.png',name: '香辣鸡腿堡套餐', money: '11.0', count: 1},
+    ]
   },
   onSubmit: function(){
 
+  },
+
+  hiddenShoppingCart:function(e){
+    this.setData({
+      showShoppingCart: false
+    })
   },
   showShoppingCart: function(){
       this.setData({
@@ -19,9 +36,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.data.params = options
+    this.initMerchant()
   },
-
+  initMerchant() {
+    const merchant = wx.getStorageSync('merchant')
+    this.setData({
+      merchant
+    })
+    this.initMenuList()
+  },
+  initMenuList(){
+    API.getMenuList({ ...this.data.params, busId: this.data.merchant.id})
+        .then(res => {
+          this.setData({
+            menuList: res
+          })
+        })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -35,7 +67,7 @@ Page({
   onShow: function () {
 
   },
-  commodityNumChange:function(e){
+  countChange:function(e){
     console.log(e)
   },
   /**

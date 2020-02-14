@@ -55,20 +55,8 @@
     align-items: center;
 }
 .meal-list .meal-item .meal-icon{
-    width: 55rpx;
-    height: 71rpx;
-}
-.meal-list .meal-item .meal-icon.meal-icon__breakfast{
-    width: 55rpx;
-    height: 71rpx;
-}
-.meal-list .meal-item .meal-icon.meal-icon__lunch{
-    width: 66rpx;
-    height: 54rpx;
-}
-.meal-list .meal-item .meal-icon.meal-icon__dinner{
-    width: 71rpx;
-    height: 65rpx;
+    width: 73rpx;
+    height: 99rpx;
 }
 .meal-list .meal-detail{
     flex:1;

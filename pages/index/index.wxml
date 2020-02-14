@@ -1,3 +1,4 @@
+<wxs module="dateUtil" src="../wxs/timeUtil.wxs"></wxs>
 <view>
     <view class="ads">
         <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
@@ -9,7 +10,7 @@
            选择商户
        </view>
         <view class="arrow-content select-tips">
-                请选择
+                {{merchant.businessName || '请选择'}}
                 <van-icon name="arrow" />
         </view>
     </view>
@@ -21,42 +22,18 @@
         </view>
     </view>
     <van-grid column-num="7" border="{{ false }}" center>
-        <van-grid-item use-slot wx:for="{{ 7 }}">
-            <view class="time selected">
-                <view class="time-week">周{{item+1}}</view>
-                <view class="time-date">02-1{{item+1}}</view>
+        <van-grid-item use-slot wx:key="index" wx:for="{{ timeList }}" data-index="{{index}}" bindtap="selectDay">
+            <view class="time {{item.selected? 'selected':''}}">
+                <view class="time-week">{{item.week}}</view>
+                <view class="time-date">{{item.date}}</view>
             </view>
         </van-grid-item>
     </van-grid>
     <view class="meal-list">
-        <navigator url="/pages/menu/menu">
-            <view class="row meal-item content-bg">
-            <image class="meal-icon meal-icon__breakfast" mode="aspectFill" src="/static/image/icon/breakfast.png"></image>
+       <view class="row meal-item content-bg"  wx:for="{{foodList}}" wx:key="index" bindtap="toMenuPage">
+           <image class="meal-icon meal-icon__breakfast" mode="aspectFill" src="/static/image/icon/breakfast.png"></image>
             <view class="meal-detail">
-                <view class="meal__name__time">早餐 08:30</view>
-                <view class="meal__desc">距离截止还有8小时9分</view>
-            </view>
-            <view class="meal-status arrow-content">
-                预定中
-                <van-icon name="arrow" />
-            </view>
-        </view>
-        </navigator>
-        <view class="row meal-item content-bg">
-            <image class="meal-icon meal-icon__lunch" mode="aspectFill" src="/static/image/icon/lunch.png"></image>
-            <view class="meal-detail">
-                <view class="meal__name__time">早餐 08:30</view>
-                <view class="meal__desc">距离截止还有8小时9分</view>
-            </view>
-            <view class="meal-status arrow-content">
-                预定中
-                <van-icon name="arrow" />
-            </view>
-        </view>
-        <view class="row meal-item content-bg">
-            <image class="meal-icon meal-icon__dinner" mode="aspectFill" src="/static/image/icon/dinner.png"></image>
-            <view class="meal-detail">
-                <view class="meal__name__time">早餐 08:30</view>
+                <view class="meal__name__time">早餐{{item}} 08:30</view>
                 <view class="meal__desc">距离截止还有8小时9分</view>
             </view>
             <view class="meal-status arrow-content">

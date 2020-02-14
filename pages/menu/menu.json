@@ -5,6 +5,8 @@
     "van-info": "@vant/weapp/info",
     "van-popup": "@vant/weapp/popup",
     "van-panel": "@vant/weapp/panel",
-    "van-stepper": "@vant/weapp/stepper"
+    "van-stepper": "@vant/weapp/stepper",
+    "van-divider": "@vant/weapp/divider",
+    "merchandise": "/component/merchandise/merchandise"
   }
 }

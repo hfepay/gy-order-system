@@ -1,5 +1,5 @@
-import { request, getPromiseInstance, wxlogin, tooltips, getToken} from './request'
-
+import { request, getPromiseInstance, wxlogin, tooltips} from './request'
+console.log(getApp)
 const __API = {
   initJsCode:() => {
     return getPromiseInstance((resolve,reject) => {
@@ -46,18 +46,11 @@ const __API = {
   login: (jsCode, encryptedData, iv) => {
     return getPromiseInstance((resolve,reject) => {
       const data = {
-        username:123456,
-        password:123456,
-        grant_type:'password',
-        scope:'app',
-        client_id:'app',
-        client_secret:'app@2018',
-        auth_type:'weixin',
-        encryptedData:encryptedData,
+        // encryptedData:encryptedData,
         jsCode:jsCode,
-        iv:iv,
+        // iv:iv,
       }
-      request.post('/oauth/token', data, { 'content-type': 'application/x-www-form-urlencoded'})
+      request.post('/of/miniprog/login', data, { 'content-type': 'application/x-www-form-urlencoded'})
         .then(res => resolve(res))
         .catch(res => reject(res))
     })
@@ -70,20 +63,6 @@ const API = {
     wx.removeStorageSync('userInfo')
     wx.removeStorageSync('token')
   },
-  getUserInfo: () => {
-    return getPromiseInstance((resolve,reject) =>{
-      const token = getToken()
-      let responce = {}
-      if(token){
-        request.get('/beAccount/user/current')
-          .then(res => {
-            responce = res
-            res && wx.setStorageSync('userInfo', res)
-            resolve( responce)
-          })
-      }
-    })
-  },
   login: ({encryptedData,iv}) => {
     return getPromiseInstance((resolve,reject) => {
       try {
@@ -92,9 +71,7 @@ const API = {
           .then(jsCode => {
             __API.login(jsCode, encryptedData, iv)
               .then(res => {
-                const token = res.token_type + ' '+ res.access_token
-                wx.setStorageSync('token', token)
-                resolve(API.getUserInfo())
+                resolve(res)
               }).catch(err => {
               reject(err)
             })
@@ -103,6 +80,30 @@ const API = {
         tooltips(e)
         reject(e)
       }
+    })
+  },
+  register:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/of/register',data)
+          .then(res => resolve(res))
+    })
+  },
+  getMerchantList:() => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get('/food/bus')
+          .then(res => resolve(res))
+    })
+  },
+  getFoodList:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/food/index',data)
+          .then(res => resolve(res))
+    })
+  },
+  getMenuList:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/food/menu',data)
+          .then(res => resolve(res))
     })
   }
 }

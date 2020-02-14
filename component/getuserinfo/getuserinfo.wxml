@@ -1,0 +1,4 @@
+<!--component/login/login.wxml-->
+<button open-type="getUserInfo" bindgetuserinfo="getuserinfo">
+  <slot></slot>
+</button>

@@ -1,20 +1,32 @@
 // pages/merchant-list/merchant-list.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.initList()
   },
-
+  initList:function(){
+    API.getMerchantList()
+        .then(res => {
+          this.setData({
+            list: res
+          })
+        })
+  },
+  chooseMerchant: function(e){
+    wx.setStorageSync('merchant',e.currentTarget.dataset.item)
+    wx.navigateBack()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

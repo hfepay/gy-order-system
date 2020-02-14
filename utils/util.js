@@ -1,25 +1,62 @@
 import { config } from './config.js'
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+Date.prototype.Format = function(fmt) {
+  var o = {
+    "M+": this.getMonth() + 1, //月份
+    "d+": this.getDate(), //日
+    "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+    "H+": this.getHours(), //小时
+    "m+": this.getMinutes(), //分
+    "s+": this.getSeconds(), //秒
+    "S": this.getMilliseconds() //毫秒
+  };
+  //周
+  var week = {
+    "0": "日",
+    "1": "一",
+    "2": "二",
+    "3": "三",
+    "4": "四",
+    "5": "五",
+    "6": "六"
+  };
+  //季度
+  var quarter = {
+    "1": "一",
+    "2": "二",
+    "3": "三",
+    "4": "四"
+  };
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  }
+  if (/(E+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "星期" : "周") : "") + week[this.getDay() + ""]);
+  }
+  if (/(q+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? "第" : "") + quarter[Math.floor((this.getMonth() + 3) / 3) + ""] + "季度");
+  }
+  for (var j in o) {
+    if (new RegExp("(" + j + ")").test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[j]) : (("00" + o[j]).substr(("" + o[j]).length)));
+    }
+  }
+  return fmt;
+}
+const formatTime = (date,fmt) => {
+  return new Date(date).Format(fmt)
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
 
 const previewImage = val => {
   return config.imgUrl + val
 }
 
+const getToken = () => {
+  return (getApp().globalData.userInfo||{}).baseToken
+}
+
 module.exports = {
   formatTime: formatTime,
-  previewImage: previewImage
+  previewImage: previewImage,
+  getToken: getToken
 }

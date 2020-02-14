@@ -1,4 +1,6 @@
 // pages/my_info/my_info.js
+const API = require('../../utils/api')
+const app = getApp()
 Page({
 
   /**
@@ -6,19 +8,50 @@ Page({
    */
   data: {
     show: false,
-    VIPTypeList: [{id:'1', name:'vip'},{id:'2', name:'svip'}]
+    VIPTypeList: [{id:'1', name:'vip'},{id:'2', name:'svip'}],
+    form: {
+      "name" : "", 								// 姓名
+      "mobile" : "",								// 手机号码
+      "staffOneUnit" : "",					// 一级单位
+      "staffOneDepartment" : "",		// 一级部门
+      "staffNo" : "",								// 员工编号
+      "staffType" : 1,									// 会员类型:1:集团员工：2:驻场单位
+      "openId" : "",								// 微信opend
+      "wechatAvatar" : "",					// 微信头像
+      "wechatNickName" : ""
+    },
+    // 页面传过来的参数
+    params: {
+      type:'',
+      openId:'',
+      session_key:'',
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(false){
+    this.data.params = options
+    if(this.data.params.type === 'regist'){
       wx.setNavigationBarTitle({title: '会员信息填写'})
     }
-
   },
-
+  submit(){
+    const data = {...this.data.form, openId: this.data.params.openId}
+    API.register(data)
+        .then(res => {
+          app.globalData.userInfo = res
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        })
+  },
+  handleInputChange(e){
+    const val = e.detail
+    const {key} = e.currentTarget.dataset
+    this.data.form[key] = val
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

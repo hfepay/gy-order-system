@@ -2,38 +2,50 @@
 <view class="container mt__primary">
   <van-cell-group>
     <van-field
-      value="{{ username3 }}"
+      data-key="name"
+      bind:change="handleInputChange"
+      value="{{ form.name }}"
       label="会员姓名"
       placeholder="请填写正确会员姓名"
       input-align="right"
     />
-    <van-cell title="会员类别" value="请选择" is-link bind:click="selectVIPType"/>
+    <van-cell title="会员类别" value="集团员工" />
     <van-field
-      value="{{ username3 }}"
+      data-key="staffOneUnit"
+      bind:change="handleInputChange"
+      value="{{ form.staffOneUnit }}"
       label="所属单位"
       placeholder="请填写所属单位"
       input-align="right"
     />
     <van-field
-      value="{{ username3 }}"
+      data-key="staffOneDepartment"
+      bind:change="handleInputChange"
+      value="{{ form.staffOneDepartment }}"
       label="所属部门"
       placeholder="请填写正确一级部门"
       input-align="right"
     />
     <van-field
-      value="{{ username3 }}"
+      data-key="staffNo"
+      bind:change="handleInputChange"
+      value="{{ form.staffNo }}"
       label="员工工号"
       placeholder="请填写正确员工工号"
       input-align="right"
     />
     <van-field
-      value="{{ username3 }}"
+      data-key="mobile"
+      bind:change="handleInputChange"
+      value="{{ form.mobile }}"
       label="联系方式"
       placeholder="请填写正确手机号"
       input-align="right"
     />
     <van-field
-      value="{{ username3 }}"
+      data-key="idcard"
+      bind:change="handleInputChange"
+      value="{{ form.idcard }}"
       label="身份证号"
       placeholder="请填写正确身份证号"
       input-align="right"
@@ -41,7 +53,7 @@
   </van-cell-group>
 </view>
 <view class="submit-btn-container submit-btn-container__fixed">
-  <van-button type="primary" block round>保存</van-button>
+  <van-button type="primary" block round bindtap="submit">保存</van-button>
 </view>
 
 <van-popup
