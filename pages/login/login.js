@@ -12,7 +12,7 @@ Page({
   login: function(e){
     API.login(e.detail)
         .then(res => {
-          app.globalData.userInfo = res
+          app.setUserInfo(res)
           wx.switchTab({
             url: '/pages/index/index',
           })

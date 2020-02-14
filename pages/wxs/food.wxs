@@ -1,0 +1,37 @@
+//0早餐 1午餐 2晚餐
+function formatDistributeType(type){
+  switch(type){
+    case "0":
+      return '早餐';
+    case "1":
+      return '午餐';
+    case "2":
+      return '晚餐';
+  }
+}
+
+function formatCutoff(type) {
+  switch (type) {
+    case true:
+      return '已截止';
+    case false:
+      return '预定中';
+  }
+}
+
+function formatMealImg(type) {
+  switch (type) {
+    case "0":
+      return '/static/image/icon/breakfast.png';
+    case "1":
+      return '/static/image/icon/lunch.png';
+    case "2":
+      return '/static/image/icon/dinner.png';
+  }
+}
+
+module.exports = {
+  formatDistributeType: formatDistributeType,
+  formatCutoff: formatCutoff,
+  formatMealImg: formatMealImg
+};

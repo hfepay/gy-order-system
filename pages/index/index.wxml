@@ -1,4 +1,4 @@
-<wxs module="dateUtil" src="../wxs/timeUtil.wxs"></wxs>
+<wxs module="food" src="../wxs/food.wxs"></wxs>
 <view>
     <view class="ads">
         <image mode="aspectFill" src="/static/image/icon/ad.png"></image>
@@ -11,7 +11,8 @@
        </view>
         <view class="arrow-content select-tips">
                 {{merchant.businessName || '请选择'}}
-                <van-icon name="arrow" />
+<!--                <van-icon name="arrow" />-->
+            >
         </view>
     </view>
     </navigator>
@@ -30,15 +31,17 @@
         </van-grid-item>
     </van-grid>
     <view class="meal-list">
-       <view class="row meal-item content-bg"  wx:for="{{foodList}}" wx:key="index" bindtap="toMenuPage">
-           <image class="meal-icon meal-icon__breakfast" mode="aspectFill" src="/static/image/icon/breakfast.png"></image>
+       <view class="row meal-item content-bg"  wx:for="{{foodList}}" wx:key="index"
+       data-item="{{item}}" bindtap="toMenuPage">
+           <image class="meal-icon meal-icon__breakfast" mode="aspectFill" src="{{food.formatMealImg(item.distributeType)}}"></image>
             <view class="meal-detail">
-                <view class="meal__name__time">早餐{{item}} 08:30</view>
-                <view class="meal__desc">距离截止还有8小时9分</view>
+                <view class="meal__name__time">{{food.formatDistributeType(item.distributeType)}} {{item.distributeTime}}</view>
+                <view class="meal__desc" wx:if="{{!item.cutoff}}">距离截止还有{{item.cutOffHours}}小时{{item.cutOffMins}}分</view>
             </view>
             <view class="meal-status arrow-content">
-                预定中
-                <van-icon name="arrow" />
+                {{food.formatCutoff(item.cutoff)}}
+<!--                <van-icon name="arrow" />-->
+                >
             </view>
         </view>
     </view>

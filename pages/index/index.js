@@ -15,7 +15,7 @@ Page({
     this.checkLogin()
   },
   checkLogin(){
-    if (app.globalData.userInfo){
+    if (app.getUserInfo()){
       this.initMerchant()
     }else{
       wx.reLaunch({
@@ -78,7 +78,8 @@ Page({
     return this.data.timeList.find(item => item.selected).day
   },
   toMenuPage:function(e){
-    const distributionType = 0;
+    const { distributionType, cutoff } = e.currentTarget.dataset.item
+    if (cutoff) return
     const day = this.getSelectDay()
     wx.navigateTo({
       url: `/pages/menu/menu?distributionType=${distributionType}&day=${day}`,

@@ -1,5 +1,4 @@
 import { request, getPromiseInstance, wxlogin, tooltips} from './request'
-console.log(getApp)
 const __API = {
   initJsCode:() => {
     return getPromiseInstance((resolve,reject) => {
