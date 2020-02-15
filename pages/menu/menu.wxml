@@ -42,7 +42,7 @@
    </view>
     <view class="total-price-info">
         <text class="total-price__text">原价:</text>
-        <text class="total-price__num">{{moneyInfo.beforeDiscount}}元</text>
+        <text class="total-price__num" style="margin-right: 20rpx;">{{moneyInfo.beforeDiscount}}元</text>
         <text class="total-price__text">实付:</text>
         <text class="total-price__num">{{moneyInfo.afterDiscount}}元</text>
     </view>

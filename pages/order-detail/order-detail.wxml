@@ -1,34 +1,56 @@
-<!--<wxs module="order" src="../wxs/order.wxs"></wxs>
-<wxs module="food" src="../wxs/food.wxs"></wxs>-->
+<!--<wxs module="order" src="../wxs/order.wxs"/>-->
+<!--直接引入会报错-->
+<wxs module="format">
+    function formatStatus(type){
+        switch (type) {
+            case 1:
+            return '待付款';
+            case 2:
+            return '已下单';
+            case 3:
+            return '已配送';
+            case 4:
+            return '已完成';
+            case 5:
+            return '已取消';
+            case 6:
+            return '申诉';
+        }
+    }
+    module.exports = {
+        formatStatus : formatStatus,
+    }
+</wxs>
+<wxs module="food" src="../wxs/food.wxs"></wxs>
 <view>
     <view class="order-status">
-        订单状态todo{{order.orderStatus}}
+        订单{{format.formatStatus(order.orderStatus)}}
     </view>
     <van-cell-group>
-        <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}">
-            <van-cell title="订单编号" value-class="fs28" value="{{order.orderStatus}}">
+        <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}&orderNo={{order.orderNo}}">
+            <van-cell title="订单编号" value-class="fs28" value="{{order.orderNo}}">
                 <van-icon slot="right-icon" name="question-o" />
             </van-cell>
         </navigator>
     </van-cell-group>
     <van-cell-group custom-class="mt20 mb20">
         <van-cell title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
-        <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{order.distributionTime}}"/>
+        <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
     </van-cell-group>
     <van-cell-group>
         <van-cell title="{{order.orderBusName}}"/>
         <van-card
             wx:for="{{order.details}}"
             wx:key="index"
-            title="{{item.dishName}}"
+            title="{{item.foodName}}"
             custom-class="content-bg bb1"
-            thumb="{{item.dishImgSmall}}"
+            thumb="{{item.foodImgSmall}}"
         >
             <view slot="desc" class="card-price">
-                <text>￥{{item.dishUnitPrice}}</text>
+                <text>￥{{item.price}}</text>
             </view>
             <view slot="bottom">
-                <text style="color: #999999;font-size: 30rpx">X{{item.dishNumber}}</text>
+                <text style="color: #999999;font-size: 30rpx">X{{item.foodNumber}}</text>
             </view>
         </van-card>
     </van-cell-group>
@@ -52,6 +74,17 @@
                 type="primary">
                 已取餐
                 </van-button>
+
+        <!--        待付款-->
+        <van-button
+                wx:if="{{order.orderStatus == 1 }}"
+                bindtap="gotoPay"
+                custom-class="operate-btn"
+                block
+                round
+                type="primary">
+            去付款
+        </van-button>
         <!--        已下单 待付款-->
             <van-button
                 bindtap="cancelOrder"
@@ -60,16 +93,6 @@
                 block
                 round>
                 取消订单
-            </van-button>
-<!--        待付款-->
-            <van-button
-                wx:if="{{order.orderStatus == 1 }}"
-                bindtap="gotoPay"
-                custom-class="operate-btn"
-                block
-                round
-                type="primary">
-                去付款
             </van-button>
     </view>
 </view>

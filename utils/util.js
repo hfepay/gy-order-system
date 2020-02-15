@@ -52,7 +52,7 @@ const previewImage = val => {
 }
 
 const getToken = () => {
-  // return "3d2084b8-17ca-470e-8043-41d4a2f3485a"
+  // return "cfed20a2-054e-48f4-bce5-90ef7460212e"
   return (getApp().globalData.userInfo||{}).baseToken
 }
 

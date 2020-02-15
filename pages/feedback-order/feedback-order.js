@@ -1,3 +1,4 @@
+const API = require('../../utils/api')
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
   data: {
     form: {
       description: '',
+      orderNo: '',
       orderId: ''
     }
   },
@@ -13,9 +15,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function ({orderId}) {
+  onLoad: function ({orderId, orderNo}) {
       this.setData({
-        'form.orderId': orderId
+        'form.orderId': orderId,
+        'form.orderNo': orderNo
       })
   },
   handleInput(e){

@@ -11,17 +11,18 @@
         <merchandise
                 wx:for="{{orderDetail.details}}"
                 wx:key="index"
-                commodity="{{item}}">
-
+                wx:index="{{index}}"
+                commodity="{{item}}"
+                bind:numChange="numChange">
         </merchandise>
     </view>
 </view>
 <view class="submit-bar bg-primary">
     <view class="total-price-info">
         <text class="total-price__text">原价:</text>
-        <text class="total-price__num">￥{{orderDetail.orderAmount}}元</text>
+        <text class="total-price__num" style="margin-right: 20rpx;">￥{{moneyInfo.beforeDiscount ||orderDetail.orderAmount}}元</text>
         <text class="total-price__text">实付:</text>
-        <text class="total-price__num">￥{{orderDetail.payAmount}}元</text>
+        <text class="total-price__num">￥{{moneyInfo.afterDiscount || orderDetail.payAmount}}元</text>
     </view>
     <view class="">
         <van-button bindtap="submit" custom-class="submit-btn" round size="small" plain type="primary">确认支付</van-button>

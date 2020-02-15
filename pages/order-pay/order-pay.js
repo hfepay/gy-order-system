@@ -7,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    moneyInfo: {},
     orderDetail: {},
-    address: {},
-    commodity: {name:'香辣鸡腿堡套餐',img:'/static/image/logo/logo.png',money:'￥72.0', count:'1'}
+    address: {}
   },
 
   /**
@@ -25,6 +25,28 @@ Page({
   },
   onShow(){
     this.initAddress()
+  },
+  numChange:function(e){
+    const foodDetail = this.data.orderDetail.details
+    const {foodNum, index} = e.detail
+    foodDetail[index].foodNum = foodNum
+    this.setData({
+      foodDetail
+    })
+    this.calcMoney()
+  },
+  calcMoney(){
+    API.calculatePrice(this.getCalcMoneyData())
+        .then(res =>
+            this.setData({
+              moneyInfo: res
+            })
+        )
+  },
+  getCalcMoneyData(){
+    return {
+      foodDetail: this.data.orderDetail.details
+    }
   },
   initAddress(){
     if(app.globalData.address){
@@ -44,8 +66,9 @@ Page({
   submit(){
     API.pay(
         {
+        foodDetail:this.data.orderDetail.details,
         ...this.data.address,
-        orderNo: this.data.orderDetail.orderId
+        orderNo: this.data.orderDetail.id
       }
     ).then(_ => {
       wx.switchTab({
