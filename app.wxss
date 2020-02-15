@@ -25,6 +25,9 @@ page{
 .bb1{
   border-bottom: 1px solid #EEEEEE;
 }
+.fwbd{
+  font-weight: bold!important;
+}
 
 .submit-btn-container{
   box-sizing: border-box;

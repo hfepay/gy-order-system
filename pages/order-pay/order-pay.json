@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-cell": "@vant/weapp/cell",
+    "van-button": "@vant/weapp/button",
+    "merchandise": "/component/merchandise/merchandise"
+  }
+}

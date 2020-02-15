@@ -1,17 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/feedback/feedback",
+    "pages/feedback-order/feedback-order",
     "pages/order-detail/order-detail",
     "pages/order/order",
     "pages/menu/menu",
-    "pages/feedback-order/feedback-order",
     "pages/merchant-list/merchant-list",
     "pages/my/my",
     "pages/edit_address/edit_address",
     "pages/my_info/my_info",
     "pages/feedback-success/feedback-success",
     "pages/address/address",
-    "pages/feedback/feedback",
+    "pages/order-pay/order-pay",
     "pages/login/login"
   ],
   "tabBar": {

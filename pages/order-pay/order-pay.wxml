@@ -1,0 +1,22 @@
+<view>
+    <view style="margin: 21rpx 0;">
+        <van-cell title="订单编号" value="2019041920011" ></van-cell>
+    </view>
+    <van-cell-group>
+        <van-cell title="收货地址" is-link></van-cell>
+        <van-cell title="配送时间" value="2020-02-12 早餐 8:00"></van-cell>
+    </van-cell-group>
+    <view class="content-bg mt__primary">
+        <van-cell title="肯德基贵州龙洞堡机场店"></van-cell>
+        <merchandise wx:for="{{2}}" commodity="{{commodity}}"></merchandise>
+    </view>
+</view>
+<view class="submit-bar bg-primary">
+    <view class="total-price-info">
+        <text class="total-price__text">合计:</text>
+        <text class="total-price__num">￥144.0元</text>
+    </view>
+    <view class="">
+        <van-button custom-class="submit-btn" round size="small" plain type="primary">确认支付</van-button>
+    </view>
+</view>
