@@ -78,10 +78,10 @@ Page({
     return this.data.timeList.find(item => item.selected).day
   },
   toMenuPage:function(e){
-    const { distributeType, cutoff } = e.currentTarget.dataset.item
-    const day = this.getSelectDay()
+    const { distributeType, distributeTime } = e.currentTarget.dataset.item
+    const distributeDate = this.getSelectDay()
     wx.navigateTo({
-      url: `/pages/menu/menu?distributionType=${distributeType}&day=${day}`,
+      url: `/pages/menu/menu?distributeType=${distributeType}&distributeDate=${distributeDate}&distributeTime=${distributeTime}`,
     })
   }
 })

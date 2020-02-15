@@ -1,6 +1,4 @@
-import { request, getPromiseInstance, wxlogin, tooltips} from './request'
-let app = null
-setTimeout(_ => app = getApp(), 0)
+import { request, getPromiseInstance, wxlogin, tooltips, logout} from './request'
 const __API = {
   initJsCode:() => {
     return getPromiseInstance((resolve,reject) => {
@@ -57,13 +55,11 @@ const __API = {
     })
   }
 }
-app
 const API = {
   initJsCode:__API.initJsCode,
   logout:(data) => {
     return getPromiseInstance((resolve,reject) => {
-      app.globalData.userInfo = null
-      wx.clearStorageSync()
+      logout()
       resolve()
     })
   },
@@ -160,7 +156,25 @@ const API = {
   },
   cancelOrder:(id) => {
     return getPromiseInstance((resolve,reject) => {
-      request.post(`/ofMemberOrder/cancelOrder/${id}`)
+      request.post(`/food/cancelOrder/${id}`)
+          .then(res => resolve(res))
+    })
+  },
+  addOrder:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/food/aMeal`, data)
+          .then(res => resolve(res))
+    })
+  },
+  calculatePrice:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/food/calculatePrice`, data)
+          .then(res => resolve(res))
+    })
+  },
+  pay:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/food/pay`, data)
           .then(res => resolve(res))
     })
   },

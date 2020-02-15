@@ -1,66 +1,56 @@
 // pages/order-pay/order-pay.js
+const API = require('../../utils/api')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    orderDetail: {},
+    address: {},
     commodity: {name:'香辣鸡腿堡套餐',img:'/static/image/logo/logo.png',money:'￥72.0', count:'1'}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function ({orderId}) {
+    this.getOrderDetail(orderId)
+        .then(orderDetail => {
+          this.setData({
+            orderDetail
+          })
+        })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow(){
+    this.initAddress()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  initAddress(){
+    if(app.globalData.address){
+      this.setData({
+        address: app.globalData.address
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getOrderDetail(orderId){
+    API.getOrder(orderId)
+        .then(orderDetail => {
+          this.setData({
+            orderDetail
+          })
+        })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  submit(){
+    API.pay(
+        {
+        ...this.data.address,
+        orderNo: this.data.orderDetail.orderId
+      }
+    ).then(_ => {
+      wx.switchTab({
+        url: '/pages/order/order',
+      })
+    })
   }
 })

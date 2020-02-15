@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 判断是否是选择地址
+    type: '',
     form:{
       id:"",
       "addrName": "",
@@ -16,7 +18,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function ({id}) {
+  onLoad: function ({id, type}) {
+    this.data.type = type
     if(id){
       wx.setNavigationBarTitle({title: '修改地址'})
       this.getAddress(id)
@@ -40,25 +43,19 @@ Page({
   updateAddress(){
     API.updateAddress(this.data.form)
         .then(_ =>
-            wx.redirectTo({
-              url: '/pages/address/address',
-            })
+            wx.navigateBack()
         )
   },
   addAddress(){
     API.addAddress(this.data.form)
         .then(_ =>
-            wx.redirectTo({
-              url: '/pages/address/address',
-            })
+            wx.navigateBack()
         )
   },
   delAddress(){
     API.delAddress(this.data.form.id)
         .then(_ =>
-            wx.redirectTo({
-              url: '/pages/address/address',
-            })
+            wx.navigateBack()
         )
   },
   handleInput(e){

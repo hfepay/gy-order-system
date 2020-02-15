@@ -1,4 +1,6 @@
 import { config } from './config.js'
+let app = null
+setTimeout(_ => app = getApp(), 0)
 import { getToken } from './util'
 const BASEURL = config.BASEURL
 const request = {
@@ -44,13 +46,10 @@ const request = {
 }
 
 const logout = () => {
-  // 退出登录 清除token 用户信息
-  //app.globalData.userInfo = null
-  //app.globalData.token = null
-  wx.removeStorageSync('userInfo')
-  wx.removeStorageSync('token')
-  wx.switchTab({
-    url: '/pages/my/index'
+  app.globalData.userInfo = null
+  wx.clearStorageSync()
+  wx.reLaunch({
+    url: '/pages/login/login',
   })
 }
 
@@ -80,7 +79,7 @@ const requestDefault = function (url = '', data, methods, header){
       if(res.statusCode === 200 && res.data.code == 1 ){
         resolve(res.data.data)
       }else{
-        if(res.data.code == 698 || res.data.code == 699){
+        if(res.data.code == 401){
           logout()
         }
         msg = res.data.message
@@ -128,5 +127,5 @@ const wxlogin = () => {
 }
 
 module.exports ={
-  request, getPromiseInstance, wxlogin, tooltips
+  request, getPromiseInstance, wxlogin, tooltips,logout
 }

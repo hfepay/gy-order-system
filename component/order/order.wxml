@@ -2,7 +2,7 @@
 <wxs module="order" src="../../pages/wxs/order.wxs"></wxs>
 <view class="order-container">
     <view class="order-header">
-        <view class="merchant-name">商户名称todo</view>
+        <view class="merchant-name">{{item.orderBusName}} {{ item.distributionTime}}</view>
         <view class="order-status {{(item.orderStatus == 4 || item.orderStatus == 5 || item.orderStatus == 6) ? 'order-status__finished' : ''}}">
             {{order.formatStatus(item.orderStatus)}}
         </view>
@@ -10,7 +10,7 @@
     <van-card
         custom-class="card-bg"
         thumb-class="card-thumb"
-        thumb="{{item.orderPic}}"
+        thumb="{{item.orderBusLogoImg}}"
     >
         <view slot="title" class="title">
             {{food.formatDistributeType(item.distributionType)}} {{item.distributionTime}}

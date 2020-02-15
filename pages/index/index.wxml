@@ -11,7 +11,6 @@
        </view>
         <view class="arrow-content select-tips">
                 {{merchant.businessName || '请选择'}}
-<!--                <van-icon name="arrow" />-->
             >
         </view>
     </view>
@@ -40,7 +39,6 @@
             </view>
             <view class="meal-status arrow-content">
                 {{food.formatCutoff(item.cutoff)}}
-<!--                <van-icon name="arrow" />-->
                 >
             </view>
         </view>

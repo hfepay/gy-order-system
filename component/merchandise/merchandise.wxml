@@ -1,21 +1,21 @@
 <view class="commodity-item content-bg bb1">
     <view class="commodity-img">
-        <image mode="aspectFill" src="{{commodity.img}}"></image>
+        <image mode="aspectFill" src="{{commodity.foodImgSmall}}"></image>
     </view>
     <view class="commodity-info">
-        <view class="commodity-info__name label">{{commodity.name}}</view>
+        <view class="commodity-info__name label">{{commodity.foodName}}</view>
         <view class="commodity-info__price__num">
             <view class="commodity-info__price">
-                ￥{{commodity.money}}
+                ￥{{commodity.price}}
             </view>
             <view class="commodity-info__num">
                 <van-stepper
-                        input-class="stepper-input"
-                        plus-class="stepper-icon stepper-icon__plus"
-                        minus-class="stepper-icon stepper-icon__minus"
-                        value="{{commodity.count}}"
-                        bind:change="commodityNumChange"
-                        disable-input="{{true}}"
+                    input-class="stepper-input"
+                    plus-class="stepper-icon stepper-icon__plus"
+                    minus-class="stepper-icon stepper-icon__minus"
+                    value="{{commodity.foodNum}}"
+                    bind:change="numChange"
+                    disable-input="{{true}}"
                 />
             </view>
         </view>

@@ -8,20 +8,78 @@ Page({
   data: {
     merchant: {},
     params: {
-      distributionType: '',
-      day: ''
+      distributeType: '',
+      distributeTime: '',
+      distributeDate: ''
     },
     showShoppingCart: false,
     menuList: [],
-    commodityList: [
-      {img: '/static/image/icon/ad.png',name: '香辣鸡腿堡套餐', money: '72.0', count: 2},
-      {img: '/static/image/icon/ad.png',name: '香辣鸡腿堡套餐', money: '11.0', count: 1},
-    ]
+    allFoodNum: 0,
+    moneyInfo:{
+      afterDiscount: '',
+      beforeDiscount: '',
+      discount: '',
+      discountAmount: '',
+    },
+    orderDetail: {
+      foodDetail:[],
+    },
   },
-  onSubmit: function(){
+  addFood(e){
+    const {food} = e.currentTarget.dataset
+    const foodDetail = this.data.orderDetail.foodDetail
+    // 判断是新增数量还是新增记录
+    let index;
+    foodDetail.find((item,i) => {
+      const result = (item.foodId === food.foodId)
+      result && (index = i)
+      return result
+    })
+    if(index !== undefined){
+      foodDetail[index].foodNum++
+    }else{
+      foodDetail.push({
+        ...food,
+        foodNum: 1
+      })
+    }
+    const allFoodNum = foodDetail.reduce((cur, item, index) => {
+        return cur + item.foodNum
+    },0)
+    this.setData({
+      'orderDetail.foodDetail':foodDetail,
+      allFoodNum
+    })
+    this.calcMoney()
+  },
+  calcMoney(){
+    API.calculatePrice(this.getCalcMoneyData())
+        .then(res =>
+          this.setData({
+            moneyInfo: res
+          })
+        )
+  },
+  getCalcMoneyData(){
+    return this.data.orderDetail
+  },
+  addOrder(){
+    API.addOrder(this.getSubmitData())
+        .then(orderId => {
+          wx.navigateTo({
+            url: '/pages/order-pay/order-pay?orderId='+orderId,
+          })
+        })
 
   },
-
+  getSubmitData(){
+    const data = {
+      ...this.data.orderDetail,
+      ...this.data.params,
+      busId: this.data.merchant.id
+    }
+    return data
+  },
   hiddenShoppingCart:function(e){
     this.setData({
       showShoppingCart: false
@@ -47,7 +105,11 @@ Page({
     this.initMenuList()
   },
   initMenuList(){
-    const params = { ...this.data.params, busId: this.data.merchant.id}
+    const params = {
+      busId: this.data.merchant.id,
+      distributionType: this.data.params.distributeType,
+      day: this.data.params.distributeDate,
+    }
     API.getMenuList(params)
         .then(res => {
           this.setData({
@@ -55,54 +117,13 @@ Page({
           })
         })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  numChange:function(e){
+    const foodDetail = this.data.orderDetail.foodDetail
+    const {foodNum, index} = e.detail
+    foodDetail[index].foodNum = foodNum
+    this.setData({
+      foodDetail
+    })
+    this.calcMoney()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-  countChange:function(e){
-    console.log(e)
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

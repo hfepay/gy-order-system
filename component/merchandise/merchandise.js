@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    commodity: Object
+    commodity: Object,
+    index:Number
   },
 
   /**
@@ -18,8 +19,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    commodityNumChange:function (e) {
-      this.triggerEvent('countChange', e.detail)
+    numChange:function (e) {
+      this.triggerEvent('numChange', {foodNum:e.detail,index:this.data.index})
     }
   }
 })

@@ -6,15 +6,13 @@
 </view>
 
 <view class="address-list">
-    <view class="address-item" wx:for="{{addressList}}" wx:key="index">
+    <view class="address-item" wx:for="{{addressList}}" wx:key="index" bindtap="chooseAddress" data-address="{{item}}">
         <view class="address-detail">
             <view class="address">{{item.addrMore}}</view>
             <view class="userinfo">{{item.addrName}}   {{item.addrMobile}}</view>
         </view>
-        <view class="edit">
-          <navigator url="/pages/edit-address/edit-address?id={{item.id}}">
+        <view class="edit" catchtap="edit" data-id="{{item.id}}">
             <image mode="aspectFill" src="/static/image/icon/edit.png"></image>
-          </navigator>
         </view>
     </view>
 </view>

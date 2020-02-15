@@ -19,29 +19,44 @@
             num="1"
             price="{{item.price}}"
             desc="库存{{item.stock}}"
-            title="{{item.foodTypeCn}}"
+            title="{{item.foodName}}"
             thumb="{{item.foodImg}}"
         >
             <view slot="footer">
-                <image mode="aspectFill" src="/static/image/icon/add.png" style="width: 48rpx;height: 48rpx"></image>
+                <image
+                   bindtap="addFood"
+                   data-food="{{item}}"
+                   mode="aspectFill"
+                   src="/static/image/icon/add.png"
+                   style="width: 48rpx;height: 48rpx">
+                </image>
             </view>
         </van-card>
     </view>
 </view>
-<view class="submit-bar bg-primary">
+<view class="submit-bar bg-primary" hidden="{{orderDetail.foodDetail.length === 0}}">
     <view class="icon-container" bindtap="showShoppingCart">
     <image mode="aspectFill" src="/static/image/icon/shopping-cart.png" style="width: 93rpx;height: 62rpx;"></image>
-    <van-info info="{{9}}">
+    <van-info info="{{allFoodNum}}">
     </van-info>
    </view>
     <view class="total-price-info">
-        <text class="total-price__text">合计:</text>
-        <text class="total-price__num">72.0元</text>
+        <text class="total-price__text">原价:</text>
+        <text class="total-price__num">{{moneyInfo.beforeDiscount}}元</text>
+        <text class="total-price__text">实付:</text>
+        <text class="total-price__num">{{moneyInfo.afterDiscount}}元</text>
     </view>
     <view class="">
-        <navigator url="/pages/order-pay/order-pay">
-            <van-button custom-class="submit-btn" round size="small" plain type="primary">提交订单</van-button>
-        </navigator>
+        <van-button
+            disabled="{{orderDetail.foodDetail.length === 0}}"
+            bindtap="addOrder"
+            custom-class="submit-btn"
+            round
+            size="small"
+            plain
+            type="primary">
+            提交订单
+        </van-button>
     </view>
 </view>
 
@@ -65,10 +80,11 @@
         </view>
         <view class="commodity-list">
             <merchandise
-                    wx:for="{{commodityList}}"
-                    wx:key="index"
-                    commodity="{{item}}"
-                    bind:countChange="countChange"
+                wx:for="{{orderDetail.foodDetail}}"
+                wx:key="index"
+                wx:index="{{index}}"
+                commodity="{{item}}"
+                bind:numChange="numChange"
             >
             </merchandise>
         </view>

@@ -1,45 +1,46 @@
-<wxs module="order" src="../../pages/wxs/order.wxs"></wxs>
+<!--<wxs module="order" src="../wxs/order.wxs"></wxs>
+<wxs module="food" src="../wxs/food.wxs"></wxs>-->
 <view>
     <view class="order-status">
-        订单状态todo
-        {{order.formatStatus(order.orderStatus)}}
+        订单状态todo{{order.orderStatus}}
     </view>
     <van-cell-group>
         <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}">
-            <van-cell title="订单编号" value-class="fs28" value="2019041920011">
+            <van-cell title="订单编号" value-class="fs28" value="{{order.orderStatus}}">
                 <van-icon slot="right-icon" name="question-o" />
             </van-cell>
         </navigator>
     </van-cell-group>
     <van-cell-group custom-class="mt20 mb20">
-        <van-cell title="机场T1航站楼调度室1楼" desc-class="fs28" label="张汇峰   130****1003"/>
-        <van-cell title="配送时间" value-class="fs28" value="2020-02-12 早餐 8:00"/>
+        <van-cell title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
+        <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{order.distributionTime}}"/>
     </van-cell-group>
     <van-cell-group>
-        <van-cell title="肯德基贵州龙洞堡机场店"/>
+        <van-cell title="{{order.orderBusName}}"/>
         <van-card
-            wx:for="{{2}}"
-            title="香辣鸡腿堡套餐"
+            wx:for="{{order.details}}"
+            wx:key="index"
+            title="{{item.dishName}}"
             custom-class="content-bg bb1"
-            thumb="/static/image/logo/logo.png"
+            thumb="{{item.dishImgSmall}}"
         >
             <view slot="desc" class="card-price">
-                <text>￥72.0</text>
+                <text>￥{{item.dishUnitPrice}}</text>
             </view>
             <view slot="bottom">
-                <text style="color: #999999;font-size: 30rpx">X1</text>
+                <text style="color: #999999;font-size: 30rpx">X{{item.dishNumber}}</text>
             </view>
         </van-card>
     </van-cell-group>
     <van-cell-group>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="下单时间" value="2020-02-13 11:11:11"/>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="2020-02-13 11:11:11"/>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥144.00"/>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥44.00"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="下单时间" value="{{order.createTime}}"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="todo"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.orderAmount}}"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥todo"/>
     </van-cell-group>
     <view class="actually-money-info fs32 content-bg">
         <text class="actually-money__label">实付款:</text>
-        <text class="actually-money__value">￥100.00</text>
+        <text class="actually-money__value">￥{{order.payAmount}}</text>
     </view>
     <view class="btn-container content-bg">
         <!--        已下单 已配送-->
