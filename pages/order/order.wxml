@@ -1,5 +1,5 @@
 <!--pages/order/order.wxml-->
-<van-tabs bind:click="onTabClick">
+<van-tabs bind:click="onTabClick" tab-active-class="fwbd">
     <van-tab title="待完成"></van-tab>
     <van-tab title="已完成"></van-tab>
 </van-tabs>

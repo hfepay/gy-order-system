@@ -11,6 +11,8 @@
 }
 .input-container{
   margin: 64rpx 42rpx 71rpx 53rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
   background-color: white;
 }
 .input-container textarea{

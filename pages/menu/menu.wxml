@@ -39,7 +39,9 @@
         <text class="total-price__num">72.0元</text>
     </view>
     <view class="">
-        <van-button custom-class="submit-btn" round size="small" plain type="primary">提交订单</van-button>
+        <navigator url="/pages/order-pay/order-pay">
+            <van-button custom-class="submit-btn" round size="small" plain type="primary">提交订单</van-button>
+        </navigator>
     </view>
 </view>
 

@@ -59,7 +59,7 @@
 .total-price__num{}
 .submit-btn{
     padding: 24rpx 41rpx!important;
-
+    font-weight: bold;
 }
 .panel-header{
     display: flex;
