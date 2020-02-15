@@ -21,7 +21,7 @@ Page({
           if (err.code === 1003){
             const { openid, session_key} = err.data
             wx.redirectTo({
-              url: `/pages/my_info/my_info?type=regist&openId=${openid}&session_key=${session_key}`,
+              url: `/pages/my-info/my-info?type=regist&openId=${openid}&session_key=${session_key}`,
             })
           }
         })

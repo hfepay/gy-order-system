@@ -1,0 +1,47 @@
+<van-cell-group custom-class="mt__primary">
+    <van-field
+        data-key="addrName"
+        bindchange="handleInput"
+        value="{{ form.addrName }}"
+        label="联系人"
+        placeholder="请填写收货人姓名"
+        input-align="right"
+    />
+    <van-field
+        type="number"
+        maxlength="11"
+        data-key="addrMobile"
+        bindchange="handleInput"
+        value="{{ form.addrMobile }}"
+        label="电话"
+        placeholder="请填写收货手机号码"
+        input-align="right"
+    />
+    <van-field
+        data-key="addrMore"
+        bindchange="handleInput"
+        value="{{ form.addrMore }}"
+        label="收货地址"
+        placeholder="请输入收货地址"
+        input-align="right"
+    />
+</van-cell-group>
+<view class="submit-btn-container" style="margin-top:118rpx;">
+    <van-button
+        bindtap="submit"
+        type="primary"
+        block
+        round>
+        保存地址
+    </van-button>
+    <van-button
+      wx:if="{{form.id}}"
+      plain
+      block
+      round
+      bindtap="delAddress"
+      custom-class="del-btn"
+      color="#01729E">
+      册除地址
+    </van-button>
+</view>

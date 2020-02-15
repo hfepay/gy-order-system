@@ -1,4 +1,6 @@
 import { request, getPromiseInstance, wxlogin, tooltips} from './request'
+let app = null
+setTimeout(_ => app = getApp(), 0)
 const __API = {
   initJsCode:() => {
     return getPromiseInstance((resolve,reject) => {
@@ -55,12 +57,15 @@ const __API = {
     })
   }
 }
-
+app
 const API = {
   initJsCode:__API.initJsCode,
-  logout: () => {
-    wx.removeStorageSync('userInfo')
-    wx.removeStorageSync('token')
+  logout:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      app.globalData.userInfo = null
+      wx.clearStorageSync()
+      resolve()
+    })
   },
   login: ({encryptedData,iv}) => {
     return getPromiseInstance((resolve,reject) => {
@@ -104,7 +109,85 @@ const API = {
       request.post('/food/menu',data)
           .then(res => resolve(res))
     })
-  }
+  },
+  getAddressList:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get('/ofMember/addr',data)
+          .then(res => resolve(res))
+    })
+  },
+  addAddress:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/ofMember/newAddr',data)
+          .then(res => resolve(res))
+    })
+  },
+  updateAddress:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/ofMember/modifAddr',data)
+          .then(res => resolve(res))
+    })
+  },
+  getAddress:(id) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get('/ofMember/addrDetail/'+id)
+          .then(res => resolve(res))
+    })
+  },
+  delAddress:(id) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post('/ofMember/delAddr/'+id)
+          .then(res => resolve(res))
+    })
+  },
+  getUnfinishedOrders:() => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get('/ofMemberOrder/unfinished')
+          .then(res => resolve(res))
+    })
+  },
+  getFinishedOrders:() => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get('/ofMemberOrder/done')
+          .then(res => resolve(res))
+    })
+  },
+  getOrder:(id) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get(`/ofMemberOrder/details/${id}`)
+          .then(res => resolve(res))
+    })
+  },
+  cancelOrder:(id) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/ofMemberOrder/cancelOrder/${id}`)
+          .then(res => resolve(res))
+    })
+  },
+  getMyInfo: () => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get(`/ofMember/info`)
+          .then(res => resolve(res))
+    })
+  },
+  feedback: (data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/ofMember/feedback`, data)
+          .then(res => resolve(res))
+    })
+  },
+  verifyMemberNo: (no) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.get(`/of/verifyMemberNo/${no}`)
+          .then(res => resolve(res))
+    })
+  },
+  updateInfo:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/ofMember/modifInfo`, data)
+          .then(res => resolve(res))
+    })
+  },
 }
 
 

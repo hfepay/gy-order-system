@@ -1,4 +1,4 @@
-// pages/my_info/my_info.js
+// pages/my-info/my-info.js
 const API = require('../../utils/api')
 const app = getApp()
 Page({
@@ -7,19 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: false,
-    VIPTypeList: [{id:'1', name:'vip'},{id:'2', name:'svip'}],
     form: {
-      "name" : "", 								// 姓名
-      "mobile" : "",								// 手机号码
-      "staffOneUnit" : "",					// 一级单位
-      "staffOneDepartment" : "",		// 一级部门
-      "staffNo" : "",								// 员工编号
-      "staffType" : 1,									// 会员类型:1:集团员工：2:驻场单位
-      "openId" : "",								// 微信opend
-      "wechatAvatar" : "",					// 微信头像
-      "wechatNickName" : ""
+      "name" : "", // 姓名
+      "mobile" : "", // 手机号码
+      "staffOneUnit" : "", // 一级单位
+      "staffOneDepartment" : "", // 一级部门
+      "staffNo" : "", // 员工编号
+      "staffType" : 1, // 会员类型:1:集团员工：2:驻场单位
+      "openId" : "", // 微信opend
+      "idcard" : "",
     },
+    // 身份证是否验证成功
+    validateIdcard: true,
     // 页面传过来的参数
     params: {
       type:'',
@@ -33,11 +32,53 @@ Page({
    */
   onLoad: function (options) {
     this.data.params = options
-    if(this.data.params.type === 'regist'){
+    if(this.isRegist()){
+      this.setData({
+        validateIDCard: false
+      })
       wx.setNavigationBarTitle({title: '会员信息填写'})
+    }else{
+      this.getInfo()
     }
   },
+  isRegist(){
+    return this.data.params.type === 'regist'
+  },
   submit(){
+    if(this.isRegist()){
+      this.regist()
+    }else{
+      this.updateInfo()
+    }
+  },
+  updateInfo(){
+    const{staffNo, mobile} = this.data.form
+    API.updateInfo({staffNo, mobile})
+        .then(res => {
+          wx.showToast({
+            title: res.message,
+            icon: 'none',
+          })
+        })
+  },
+  validateIdcard(){
+    API.verifyMemberNo(this.data.form.idcard)
+        .then(res => {
+          this.setData({
+            form:res,
+            validateIdcard: true
+          })
+        })
+  },
+  getInfo(){
+    API.getMyInfo()
+        .then(res =>
+            this.setData({
+              form: res
+            })
+        )
+  },
+  regist(){
     const data = {...this.data.form, openId: this.data.params.openId}
     API.register(data)
         .then(res => {
@@ -71,21 +112,6 @@ Page({
    */
   onHide: function () {
 
-  },
-  onConfirm: function(){
-    this.setData({
-      show: false
-    })
-  },
-  onCancel: function(){
-    this.setData({
-      show: false
-    })
-  },
-  selectVIPType: function(){
-    this.setData({
-      show: true
-    })
   },
   /**
    * 生命周期函数--监听页面卸载

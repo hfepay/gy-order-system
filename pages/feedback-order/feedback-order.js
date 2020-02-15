@@ -1,23 +1,35 @@
-// pages/feedback-order/feedback-order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    form: {
+      description: '',
+      orderId: ''
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function ({orderId}) {
+      this.setData({
+        'form.orderId': orderId
+      })
+  },
+  handleInput(e){
+    const val = e.detail.value
+    const {key} = e.currentTarget.dataset
+    this.data.form[key] = val
   },
   submit: function(e){
-    wx.navigateTo({
-      url: '/pages/feedback-success/feedback-success',
-    })
+    API.feedback(this.data.form)
+        .then(_ =>
+            wx.navigateTo({
+              url: '/pages/feedback-success/feedback-success',
+            })
+        )
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

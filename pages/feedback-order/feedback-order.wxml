@@ -1,9 +1,9 @@
 <view class="container">
     <view class="order-number">
-        订单编号:2019041920011
+        订单编号:{{form.orderId}}
     </view>
     <view class="input-container">
-        <textarea placeholder="请输入您的建议或投诉内容"></textarea>
+        <textarea placeholder="请输入您的建议或投诉内容" bindinput="handleInput" data-key="description"></textarea>
     </view>
 </view>
 

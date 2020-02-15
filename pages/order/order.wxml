@@ -3,18 +3,18 @@
     <van-tab title="待完成"></van-tab>
     <van-tab title="已完成"></van-tab>
 </van-tabs>
-<view class="order-list">
-    <view class="order-item" wx:for="{{3}}">
-        <navigator url="/pages/order-detail/order-detail">
-            <order >
+<van-divider wx:if="{{orderList.length === 0}}" content-position="center">暂无数据</van-divider>
+<view wx:else class="order-list">
+    <view class="order-item" wx:for="{{orderList}}" wx:key="id">
+        <navigator url="/pages/order-detail/order-detail?id={{item.id}}">
+            <order item="{{item}}">
                 <van-button
-                        type="primary"
-                        custom-class="pay-btn"
-                        wx:if="index === 2">
+                    type="primary"
+                    custom-class="pay-btn"
+                    wx:if="{{item.orderStatus == 1 }}">
                     立即支付
                 </van-button>
             </order>
         </navigator>
     </view>
-
 </view>

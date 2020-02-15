@@ -12,13 +12,11 @@
     </view>
   </view>
   <view class="cell-container">
-    <van-cell title="我的资料" is-link url="/pages/my_info/my_info"/>
+    <van-cell title="我的资料" is-link url="/pages/my-info/my-info"/>
     <van-cell title="收货地址" is-link url="/pages/address/address"/>
     <van-cell title="问题反馈" is-link url="/pages/feedback/feedback"/>
   </view>
   <view class="logout">
-    <navigator url="/pages/login/login">
-      <van-button block>退出</van-button>
-    </navigator>
+      <van-button block bindtap="logout">退出</van-button>
   </view>
 </view>

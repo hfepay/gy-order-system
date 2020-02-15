@@ -1,20 +1,28 @@
 // pages/address/address.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addressList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initAddressList()
   },
-
+  initAddressList(){
+    API.getAddressList()
+        .then(res => {
+          this.setData({
+            addressList: res
+          })
+        })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

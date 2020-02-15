@@ -79,13 +79,9 @@ Page({
   },
   toMenuPage:function(e){
     const { distributeType, cutoff } = e.currentTarget.dataset.item
-    if (cutoff) return
     const day = this.getSelectDay()
     wx.navigateTo({
       url: `/pages/menu/menu?distributionType=${distributeType}&day=${day}`,
     })
-  },
-  login: function(e){
-    console.log(e)
-  },
+  }
 })

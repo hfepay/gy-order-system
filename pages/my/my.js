@@ -1,4 +1,5 @@
 // pages/my/my.js
+const API = require('../../utils/api')
 Page({
 
   /**
@@ -13,7 +14,14 @@ Page({
    */
   onLoad: function (options) {
   },
-
+  logout(){
+    API.logout()
+        .then(_ => {
+          wx.reLaunch({
+            url: '/pages/login/login',
+          })
+        })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

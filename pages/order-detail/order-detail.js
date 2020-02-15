@@ -1,20 +1,31 @@
 // pages/order-detail/order-detail.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    order:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function ({id}) {
+      this.getOrder(id)
   },
-
+  getOrder(id){
+    API.getOrder(id)
+        .then(res =>
+          this.setData({
+            order:res
+          })
+        )
+  },
+  takeMeal(){},
+  cancelOrder(){},
+  gotoPay(){},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

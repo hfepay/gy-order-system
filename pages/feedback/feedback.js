@@ -1,11 +1,14 @@
 // pages/feedback/feedback.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    form: {
+      description: ''
+    }
   },
 
   /**
@@ -14,7 +17,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  handleInput(e){
+    const val = e.detail.value
+    const {key} = e.currentTarget.dataset
+    this.data.form[key] = val
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -22,9 +29,12 @@ Page({
 
   },
   submit: function(e){
-    wx.navigateTo({
-      url: '/pages/feedback-success/feedback-success',
-    })
+    API.feedback(this.data.form)
+        .then(_ =>
+            wx.navigateTo({
+              url: '/pages/feedback-success/feedback-success',
+            })
+        )
   },
   /**
    * 生命周期函数--监听页面显示

@@ -4,7 +4,7 @@
     <image mode="aspectFill" src="/static/image/logo/logo-airport.png"></image>
   </view>
   <view class="input-container">
-    <textarea placeholder="请输入您的建议或投诉内容"></textarea>
+    <textarea placeholder="请输入您的建议或投诉内容" bindinput="handleInput" data-key="description"></textarea>
   </view>
   <view class="submit-btn-container">
     <van-button type="primary" block round bindtap="submit">保存</van-button>
