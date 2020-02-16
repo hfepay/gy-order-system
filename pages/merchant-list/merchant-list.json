@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "选择商户",
   "usingComponents": {
     "van-divider": "@vant/weapp/divider"
   }
