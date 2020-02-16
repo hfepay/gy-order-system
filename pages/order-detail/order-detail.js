@@ -29,19 +29,25 @@ Page({
   takeMeal(){
       API.finishOrder(this.data.order.id)
           .then(_ =>
-              wx.switchTab({
-                  url: '/pages/order/order',
-              })
+              this.gotoOrder()
           )
   },
   cancelOrder(){
     API.cancelOrder(this.data.order.id)
         .then(_ =>
-            wx.switchTab({
-              url: '/pages/order/order',
-            })
+            this.gotoOrder()
         )
   },
+    gotoOrder(){
+        wx.switchTab({
+            url: '/pages/order/order',
+            success: function(e) {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return
+                page.onLoad();
+            }
+        })
+    },
   gotoPay(){
     wx.navigateTo({
       url: '/pages/order-pay/order-pay?orderId='+this.data.order.id,

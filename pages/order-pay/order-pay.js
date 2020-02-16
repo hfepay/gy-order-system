@@ -50,7 +50,9 @@ Page({
         foodNum:item.foodNumber
       }
     })
+    const businessId = this.data.orderDetail.businessId
     return {
+      businessId,
       foodDetail
     }
   },
@@ -77,9 +79,17 @@ Page({
         orderId: this.data.orderDetail.id
       }
     ).then(_ => {
-      wx.switchTab({
-        url: '/pages/order/order',
-      })
+      this.gotoOrder()
     })
-  }
+  },
+  gotoOrder(){
+    wx.switchTab({
+      url: '/pages/order/order',
+      success: function(e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return
+        page.onLoad();
+      }
+    })
+  },
 })

@@ -67,7 +67,10 @@ Page({
         )
   },
   getCalcMoneyData(){
-    return this.data.orderDetail
+    return {
+      ...this.data.orderDetail,
+      businessId: this.data.merchant.id
+    }
   },
   clearShopCar(){
     this.setData({
