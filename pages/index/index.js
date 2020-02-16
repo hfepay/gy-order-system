@@ -39,7 +39,7 @@ Page({
   },
   initTimeList(){
     const timeList = [...new Array(7).keys()].map((item,index) => {
-      const date = new Date(Date.now() + 24*60*60*1000*index)
+      const date = new Date(Date.now() + 24*60*60*1000*(index+1))
       return {
         day:formatTime(date, 'yyyy-MM-dd'),
         date:formatTime(date, 'MM-dd'),

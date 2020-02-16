@@ -43,14 +43,20 @@ Page({
         foodNum: 1
       })
     }
-    const allFoodNum = foodDetail.reduce((cur, item, index) => {
-        return cur + item.foodNum
-    },0)
     this.setData({
       'orderDetail.foodDetail':foodDetail,
+    })
+    this.setAllFoodNum()
+    this.calcMoney()
+  },
+  setAllFoodNum(){
+    const foodDetail = this.data.orderDetail.foodDetail
+    const allFoodNum = foodDetail.reduce((cur, item, index) => {
+      return cur + item.foodNum
+    },0)
+    this.setData({
       allFoodNum
     })
-    this.calcMoney()
   },
   calcMoney(){
     API.calculatePrice(this.getCalcMoneyData())
@@ -61,7 +67,19 @@ Page({
         )
   },
   getCalcMoneyData(){
-    return this.data.orderDetail
+    const foodDetail = this.data.orderDetail.foodDetail.map(item => {
+      return {
+        foodId: item.id,
+        foodNum: item.foodNum
+      }
+    })
+    return {foodDetail}
+  },
+  clearShopCar(){
+    this.setData({
+      'orderDetail.foodDetail': [],
+      showShoppingCart: false
+    })
   },
   addOrder(){
     API.addOrder(this.getSubmitData())
@@ -124,6 +142,7 @@ Page({
     this.setData({
       foodDetail
     })
+    this.setAllFoodNum()
     this.calcMoney()
   },
 })

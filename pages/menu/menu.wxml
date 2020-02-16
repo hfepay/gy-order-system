@@ -43,7 +43,7 @@
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>
         <text class="total-price__num">{{moneyInfo.afterDiscount}}元</text>
-        <text class="total-price__original">{{moneyInfo.beforeDiscount}}</text>
+<!--        <text class="total-price__original">{{moneyInfo.beforeDiscount}}</text>-->
     </view>
     <view class="">
         <van-button
@@ -68,7 +68,7 @@
     <van-panel>
         <view slot="header" class="panel-header">
             <view class="panel-header__left">已选商品</view>
-            <view class="panel-header__right">
+            <view class="panel-header__right" bindtap="clearShopCar">
                 <image mode="aspectFill"
                        src="/static/image/icon/ashcan.png"
                        style="width: 34rpx;height: 34rpx;margin-right: 10rpx;vertical-align: text-bottom;">
