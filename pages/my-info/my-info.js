@@ -15,7 +15,7 @@ Page({
       "staffNo" : "", // 员工编号
       "staffType" : 1, // 会员类型:1:集团员工：2:驻场单位
       "openId" : "", // 微信opend
-      "idcard" : "",
+      "memberNo" : "",
     },
     // 身份证是否验证成功
     validateIdcard: true,
@@ -34,7 +34,7 @@ Page({
     this.data.params = options
     if(this.isRegist()){
       this.setData({
-        validateIDCard: false
+        validateIdcard: false
       })
       wx.setNavigationBarTitle({title: '会员信息填写'})
     }else{
@@ -62,10 +62,11 @@ Page({
         })
   },
   validateIdcard(){
-    API.verifyMemberNo(this.data.form.idcard)
+    const memberNo = this.data.form.memberNo
+    API.verifyMemberNo()
         .then(res => {
           this.setData({
-            form:res,
+            form:{...res,memberNo},
             validateIdcard: true
           })
         })

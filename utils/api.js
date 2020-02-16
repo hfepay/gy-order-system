@@ -192,7 +192,7 @@ const API = {
   },
   verifyMemberNo: (no) => {
     return getPromiseInstance((resolve,reject) => {
-      request.get(`/of/verifyMemberNo/${no}`)
+      request.post(`/of/verifyMemberNo/${no}`)
           .then(res => resolve(res))
     })
   },
