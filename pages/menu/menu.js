@@ -91,7 +91,7 @@ Page({
     const data = {
       ...this.data.orderDetail,
       ...this.data.params,
-      busId: this.data.merchant.id
+        businessId: this.data.merchant.id
     }
     return data
   },
