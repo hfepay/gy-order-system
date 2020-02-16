@@ -29,7 +29,7 @@ Page({
   numChange:function(e){
     const foodDetail = this.data.orderDetail.details
     const {foodNum, index} = e.detail
-    foodDetail[index].foodNum = foodNum
+    foodDetail[index].foodNumber = foodNum
     this.setData({
       foodDetail
     })
@@ -44,8 +44,14 @@ Page({
         )
   },
   getCalcMoneyData(){
+    const foodDetail = this.data.orderDetail.details.map(item => {
+      return {
+        id: item.foodId,
+        foodNum:item.foodNumber
+      }
+    })
     return {
-      foodDetail: this.data.orderDetail.details
+      foodDetail
     }
   },
   initAddress(){
@@ -68,7 +74,7 @@ Page({
         {
         foodDetail:this.data.orderDetail.details,
         ...this.data.address,
-        orderNo: this.data.orderDetail.id
+        orderId: this.data.orderDetail.id
       }
     ).then(_ => {
       wx.switchTab({

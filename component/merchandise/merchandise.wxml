@@ -13,7 +13,7 @@
                     input-class="stepper-input"
                     plus-class="stepper-icon stepper-icon__plus"
                     minus-class="stepper-icon stepper-icon__minus"
-                    value="{{commodity.foodNum}}"
+                    value="{{commodity.foodNumber ||commodity.foodNum}}"
                     bind:change="numChange"
                     disable-input="{{true}}"
                 />

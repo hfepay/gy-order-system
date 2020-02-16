@@ -31,7 +31,7 @@ Page({
     // 判断是新增数量还是新增记录
     let index;
     foodDetail.find((item,i) => {
-      const result = (item.foodId === food.foodId)
+      const result = (item.id === food.id)
       result && (index = i)
       return result
     })
@@ -67,13 +67,7 @@ Page({
         )
   },
   getCalcMoneyData(){
-    const foodDetail = this.data.orderDetail.foodDetail.map(item => {
-      return {
-        foodId: item.id,
-        foodNum: item.foodNum
-      }
-    })
-    return {foodDetail}
+    return this.data.orderDetail
   },
   clearShopCar(){
     this.setData({

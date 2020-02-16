@@ -26,7 +26,14 @@ Page({
             }
         )
   },
-  takeMeal(){},
+  takeMeal(){
+      API.finishOrder(this.data.order.id)
+          .then(_ =>
+              wx.switchTab({
+                  url: '/pages/order/order',
+              })
+          )
+  },
   cancelOrder(){
     API.cancelOrder(this.data.order.id)
         .then(_ =>

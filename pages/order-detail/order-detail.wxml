@@ -56,7 +56,7 @@
     </van-cell-group>
     <van-cell-group>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="下单时间" value="{{order.createTime}}"/>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="todo"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="{{order.payDate}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.orderAmount}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥todo"/>
     </van-cell-group>
