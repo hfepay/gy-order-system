@@ -56,10 +56,13 @@
 .total-price__text{
 
 }
-.total-price__num{}
+.total-price__num{
+}
 .total-price__original{
     text-decoration: line-through;
     font-size: 24rpx;
+    margin-left: 20rpx;
+    color: #666666;
 }
 .submit-btn{
     padding: 24rpx 41rpx!important;
