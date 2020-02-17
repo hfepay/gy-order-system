@@ -7,7 +7,7 @@
   <view class="row logo">
     <image mode="aspectFill" src="/static/image/logo/logo.png"></image>
   </view>
-  <view class="row name">易订餐</view>
+  <view class="row name">黔易订</view>
   <login bind:login="login">
     <view class="login-btn bg-primary">
       微信用户一键登录

@@ -63,7 +63,7 @@ Page({
   },
   validateIdcard(){
     const memberNo = this.data.form.memberNo
-    API.verifyMemberNo()
+    API.verifyMemberNo(memberNo)
         .then(res => {
           this.setData({
             form:{...res,memberNo},

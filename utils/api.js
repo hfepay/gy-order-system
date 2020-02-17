@@ -2,29 +2,17 @@ import { request, getPromiseInstance, wxlogin, tooltips, logout} from './request
 const __API = {
   initJsCode:() => {
     return getPromiseInstance((resolve,reject) => {
-      wx.checkSession({
-        success:function() {
-          const jsCode = wx.getStorageSync('jsCode')
-          if(!jsCode){
-            wxlogin()
-              .then(res =>  {
-                wx.setStorageSync('jsCode', res.code)
-                resolve(res.code)
-              })
-          }else{
-            resolve(jsCode)
-          }
-        },
-        fail:function () {
-          wxlogin()
-            .then(res =>  {
-              wx.setStorageSync('jsCode', res.code)
-              resolve(res.code)
-            })
-        }
-      })
+      const jsCode = wx.getStorageSync('jsCode')
+      if (!jsCode) {
+        wxlogin()
+          .then(res => {
+            wx.setStorageSync('jsCode', res.code)
+            resolve(res.code)
+          })
+      } else {
+        resolve(jsCode)
+      }
     })
-
   },
   getPhone:(jsCode, encryptedData, iv ) => {
     return getPromiseInstance( (resolve,reject) => {
@@ -50,8 +38,15 @@ const __API = {
         // iv:iv,
       }
       request.post('/of/miniprog/login', data, { 'content-type': 'application/x-www-form-urlencoded'})
-        .then(res => resolve(res))
-        .catch(res => reject(res))
+        .then(res => {
+          wx.removeStorageSync('jsCode')
+          resolve(res)
+          }
+        )
+        .catch(res => {
+          wx.removeStorageSync('jsCode')
+          reject(res)
+        })
     })
   }
 }

@@ -15,7 +15,7 @@ function formatCutoff(type) {
     case true:
       return '已截止';
     case false:
-      return '预定中';
+      return '预订中';
   }
 }
 
