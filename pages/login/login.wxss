@@ -27,6 +27,7 @@ view{
 .name{
   font-size:54rpx;
   line-height:101rpx;
+  margin-bottom: 43rpx;
   color:var(--text-color);
 }
 .login-btn{
@@ -34,7 +35,6 @@ view{
   border-radius: 42rpx;
   height: 84rpx;
   line-height: 84rpx;
-  margin-top: 43rpx;
   font-weight: bold;
 }
 .airport-name{
