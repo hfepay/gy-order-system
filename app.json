@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/order-pay/order-pay",
+    "pages/test/test",
     "pages/order/order",
     "pages/order-detail/order-detail",
     "pages/my-info/my-info",
@@ -15,7 +16,7 @@
     "pages/login/login"
   ],
   "tabBar": {
-    "selectedColor":"#01729E",
+    "selectedColor": "#01729E",
     "list": [
       {
         "pagePath": "pages/index/index",

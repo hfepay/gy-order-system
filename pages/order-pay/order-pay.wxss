@@ -32,3 +32,30 @@
     padding: 24rpx 41rpx!important;
     font-weight: bold;
 }
+.pay-actual{
+    font-size:32rpx;
+    color:rgba(0,0,0,1);
+    text-align: right;
+    padding: 10px 16px;
+}
+.pay-actual .actual-money{
+    color: #E12E41;
+}
+.switch-container{
+    line-height: 63rpx;
+    margin: 21rpx 34rpx;
+    display: flex;
+    height: 63rpx!important;
+}
+.switch-custom-class{
+    height: 63rpx!important;
+}
+.switch-text{
+  font-size: 28rpx;
+  margin: 0 20rpx;
+}
+.switch-text__active{
+    color: var(--primary);
+    font-weight:bold;
+    font-size: 32rpx;
+}

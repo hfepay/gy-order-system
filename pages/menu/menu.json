@@ -3,6 +3,8 @@
   "usingComponents": {
     "van-card": "@vant/weapp/card",
     "van-button": "@vant/weapp/button",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-cell": "@vant/weapp/cell",
     "van-info": "@vant/weapp/info",
     "van-popup": "@vant/weapp/popup",
     "van-panel": "@vant/weapp/panel",

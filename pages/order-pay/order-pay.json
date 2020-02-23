@@ -3,7 +3,12 @@
   "usingComponents": {
     "van-cell-group": "@vant/weapp/cell-group",
     "van-cell": "@vant/weapp/cell",
+    "van-switch": "@vant/weapp/switch",
+    "van-tabs": "@vant/weapp/tabs",
+    "van-tab": "@vant/weapp/tab",
     "van-button": "@vant/weapp/button",
-    "merchandise": "/component/merchandise/merchandise"
+    "van-field": "@vant/weapp/field",
+    "merchandise": "/component/merchandise/merchandise",
+    "hf-switch": "/component/hf-switch/hf-switch"
   }
 }

@@ -1,11 +1,47 @@
-<view>
-    <view style="margin: 21rpx 0;">
-        <van-cell title="订单编号" value="{{orderDetail.orderNo}}" ></van-cell>
+<view style="margin-bottom: 118rpx;">
+    <view class="switch-container">
+        <hf-switch
+            default-value="{{orderDetail.transportType == 1}}"
+            inactive-text="外卖配送"
+            active-text="到店自取"
+            bindchange="onSwitchChange">
+        </hf-switch>
     </view>
-    <van-cell-group>
-        <van-cell title="收货地址" is-link url="/pages/address/address?type=choose" value="{{address.addrMore}}"></van-cell>
-        <van-cell title="配送时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
-    </van-cell-group>
+    <view>
+        <van-cell title="订单编号"  value="{{orderDetail.orderNo}}" ></van-cell>
+        <block
+            wx:if="{{orderDetail.transportType == 1}}"
+        >
+            <van-cell
+                title="todo机场T1航站楼到达大厅404肯德基店"
+                label="商家电话   13923815540"
+            >
+            </van-cell>
+            <van-cell title="自取时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
+            <van-field
+                    maxlength="11"
+                    type="number"
+                    data-key="memberMobile"
+                    bindchange="handleInput"
+                    input-align="right"
+                    value="{{ orderDetail.memberMobile }}"
+                    label="预留手机"
+                    right-icon="edit"
+                    border="{{ false }}"
+            />
+        </block>
+        <block
+            wx:else>
+            <van-cell
+                    title="收货地址"
+                    is-link
+                    url="/pages/address/address?type=choose"
+                    label="{{order.addrName}}   {{order.addrMobile}}"
+                    value="{{address.addrMore}}">
+            </van-cell>
+            <van-cell title="配送时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
+        </block>
+    </view>
     <view class="content-bg mt__primary">
         <van-cell title="{{orderDetail.orderBusName}}"></van-cell>
         <merchandise
@@ -16,6 +52,27 @@
                 bind:numChange="numChange">
         </merchandise>
     </view>
+    <van-cell-group>
+        <van-cell title="商品总额" value="￥144.00"></van-cell>
+        <van-cell wx:if="{{orderDetail.transportType == 0}}" title="配送费" value="￥7.00"></van-cell>
+        <van-cell title="优惠金额" value="-￥14.50"></van-cell>
+        <view class="pay-actual mb20 content-bg">
+            实付款：<text class="actual-money">￥129.50</text>
+        </view>
+    </van-cell-group>
+
+    <van-cell-group>
+        <van-field
+                maxlength="200"
+                data-key="memberRemark"
+                bindchange="handleInput"
+                input-align="right"
+                value="{{ orderDetail.memberRemark }}"
+                label="订单备注"
+                right-icon="arrow"
+                border="{{ false }}"
+        />
+    </van-cell-group>
 </view>
 <view class="submit-bar bg-primary">
     <view class="total-price-info">

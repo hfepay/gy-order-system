@@ -12,9 +12,11 @@ function formatDistributeType(type){
 
 function formatCutoff(type) {
   switch (type) {
-    case true:
+    case "-1":
+      return '已取消';
+    case "0":
       return '已截止';
-    case false:
+    case "1":
       return '预订中';
   }
 }

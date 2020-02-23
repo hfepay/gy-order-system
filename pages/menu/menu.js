@@ -1,5 +1,6 @@
 // pages/menu/menu.js
 const API = require('../../utils/api')
+const {DELIVERY_TYPE} = require('../../contants/constants')
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
       distributeTime: '',
       distributeDate: ''
     },
+    canSubmit: false,
     showShoppingCart: false,
     menuList: [],
     allFoodNum: 0,
@@ -60,16 +62,34 @@ Page({
   },
   calcMoney(){
     API.calculatePrice(this.getCalcMoneyData())
-        .then(res =>
+        .then(res =>{
           this.setData({
             moneyInfo: res
           })
-        )
+          this.setCanSubmit(res)
+        })
+  },
+  setCanSubmit({limitType,limitValue}){
+    if(limitType || limitValue){
+      const {afterDiscount} = this.data.moneyInfo
+      const allFoodNum = this.data.allFoodNum
+      if(limitType > allFoodNum|| limitValue > afterDiscount){
+        this.setData({
+          canSubmit: false
+        })
+        return
+      }
+    }
+    this.setData({
+      canSubmit: true
+    })
   },
   getCalcMoneyData(){
     return {
       ...this.data.orderDetail,
-      businessId: this.data.merchant.id
+      businessId: this.data.merchant.id,
+      // 配送方式:1.自取 2.外卖
+      transportType: DELIVERY_TYPE.SELF_PICK
     }
   },
   clearShopCar(){
@@ -79,6 +99,7 @@ Page({
     })
   },
   addOrder(){
+    if(!this.data.canSubmit)return
     API.addOrder(this.getSubmitData())
         .then(orderId => {
           wx.navigateTo({
@@ -91,7 +112,8 @@ Page({
     const data = {
       ...this.data.orderDetail,
       ...this.data.params,
-        businessId: this.data.merchant.id
+        businessId: this.data.merchant.id,
+      transportType: DELIVERY_TYPE.DELIVERY
     }
     return data
   },

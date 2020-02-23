@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order:{}
+    order:{},
+      //是否为自取
+      selfPick:true
   },
 
   /**

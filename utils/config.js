@@ -5,7 +5,7 @@ const configs = {
     imgUrl: '',
   },
   pro: {
-    BASEURL:"https://mp.gzairports.com/fowebserver"
+    BASEURL:"https://www.gzairports.com/fowebserver"
   }
 }
 const config = configs[env||'pro']

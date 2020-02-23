@@ -3,6 +3,7 @@ page{
   --grey:#999999;
   --primary:#01729E;
   --button-primary-background-color: var(--primary);
+  --switch-on-background-color: var(--primary);
   --tabs-bottom-bar-color: var(--primary);
   --submit-bar-background-color: var(--primary);
   --button-primary-border-color:var(--primary);

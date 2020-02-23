@@ -35,10 +35,10 @@
            <image class="meal-icon meal-icon__breakfast" mode="aspectFill" src="{{food.formatMealImg(item.distributeType)}}"></image>
             <view class="meal-detail">
                 <view class="meal__name__time">{{food.formatDistributeType(item.distributeType)}} {{item.distributeTime}}</view>
-                <view class="meal__desc" wx:if="{{!item.cutoff}}">距离截止还有{{item.cutOffHours}}小时{{item.cutOffMins}}分</view>
+                <view class="meal__desc" wx:if="{{item.isCutoff == 1}}">距离截止还有{{item.cutOffHours}}小时{{item.cutOffMins}}分</view>
             </view>
             <view class="meal-status arrow-content">
-                {{food.formatCutoff(item.cutoff)}}
+                {{food.formatCutoff(item.isCutoff)}}
                 >
             </view>
         </view>

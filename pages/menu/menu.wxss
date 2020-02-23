@@ -88,4 +88,9 @@
 .commodity-list{
     margin-bottom: 98rpx;
 }
+.sold-out{
+    font-size:28rpx;
+    font-weight:bold;
+    color:rgba(214,0,0,1);
+}
 

@@ -1,5 +1,6 @@
 // pages/order-pay/order-pay.js
 const API = require('../../utils/api')
+const {DELIVERY_TYPE} = require('../../contants/constants')
 const app = getApp()
 Page({
 
@@ -11,7 +12,6 @@ Page({
     orderDetail: {},
     address: {}
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,6 +25,11 @@ Page({
   },
   onShow(){
     this.initAddress()
+  },
+  handleInput(e){
+    const val = e.detail
+    const {key} = e.currentTarget.dataset
+    this.data.orderDetail[key] = val
   },
   numChange:function(e){
     const foodDetail = this.data.orderDetail.details
@@ -47,7 +52,8 @@ Page({
     const foodDetail = this.data.orderDetail.details.map(item => {
       return {
         id: item.foodId,
-        foodNum:item.foodNumber
+        foodNum:item.foodNumber,
+        transportType:DELIVERY_TYPE.SELF_PICK
       }
     })
     const businessId = this.data.orderDetail.businessId
@@ -55,6 +61,12 @@ Page({
       businessId,
       foodDetail
     }
+  },
+  onSwitchChange(e){
+    this.setData({
+      'orderDetail.transportType':e.detail?DELIVERY_TYPE.SELF_PICK:DELIVERY_TYPE.DELIVERY,
+    })
+    //this.calcMoney()
   },
   initAddress(){
     if(app.globalData.address){
