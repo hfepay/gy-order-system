@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "hf-switch": "/component/hf-switch/hf-switch"
+  }
+}

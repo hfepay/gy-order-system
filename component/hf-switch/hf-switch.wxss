@@ -1,0 +1,41 @@
+/* component/hf-switch/hf-switch.wxss */
+.switch-container{
+    display: inline-flex;
+    border-radius: 40rpx;
+    width: fit-content;
+    position: relative;
+    border: 1px solid white;
+    height: 32px;
+    background-color: #01729E;
+    text-align: center;
+}
+
+.switch-container .text{
+    z-index: 2;
+    margin: 10rpx 29rpx;
+    font-size:32rpx;
+    font-weight:bold;
+    color:white;
+    box-sizing: border-box;
+}
+.text.text_active{
+    background-color: white;
+    color:#01729E;
+}
+
+.switch-container:after{
+    content: "";
+    position: absolute;
+    top: 1px;
+    border-radius: 40rpx;
+    transition: all .3s;
+    width: 50%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 1)
+}
+.switch-container.inactive:after{
+    left: 1px;
+}
+.switch-container.active:after{
+    right: 1px;
+}
