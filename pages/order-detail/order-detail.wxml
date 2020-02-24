@@ -78,7 +78,7 @@
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="{{order.payDate}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.orderAmount}}"/>
 
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="配送费" wx:if="{{!selfPick}}" value="{{order.transportFee}}"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="配送费" wx:if="{{!selfPick}}" value="￥{{order.transportFee}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥{{order.discountAmount}}"/>
     </van-cell-group>
     <view class="actually-money-info fs32 content-bg">

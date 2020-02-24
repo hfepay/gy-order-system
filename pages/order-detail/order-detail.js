@@ -1,5 +1,6 @@
 // pages/order-detail/order-detail.js
 const API = require('../../utils/api')
+const {DELIVERY_TYPE} = require('../../contants/constants')
 Page({
 
   /**
@@ -8,7 +9,7 @@ Page({
   data: {
     order:{},
       //是否为自取
-      selfPick:true
+      selfPick:false
   },
 
   /**
@@ -24,7 +25,11 @@ Page({
               this.setData({
                 order
               })
-                console.log(this.data.order)
+                if(order.transportType == DELIVERY_TYPE.SELF_PICK){
+                    this.setData({
+                        selfPick: true
+                    })
+                }
             }
         )
   },

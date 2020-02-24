@@ -58,7 +58,7 @@ const requestDefault = function (url = '', data, methods, header){
     title: '加载中',
     mask: true,
   })
-  console.log('请求url:%s', url)
+  console.log('请求url:', url)
   console.log('请求参数:%o', data)
   const options = {
     url:`${BASEURL}${url}`,
