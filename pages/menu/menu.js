@@ -100,6 +100,10 @@ Page({
   },
   addOrder(){
     if(!this.data.canSubmit)return
+    wx.navigateTo({
+      url: '/pages/order-pay/order-pay',
+    })
+    return
     API.addOrder(this.getSubmitData())
         .then(orderId => {
           wx.navigateTo({

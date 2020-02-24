@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     commodity: Object,
-    index:Number
+    index:Number,
+    disabled:Boolean,
   },
 
   /**

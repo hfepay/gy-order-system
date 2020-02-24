@@ -191,9 +191,9 @@ const API = {
           .then(res => resolve(res))
     })
   },
-  verifyMemberNo: (no) => {
+  verifyMemberNo: (data) => {
     return getPromiseInstance((resolve,reject) => {
-      request.post(`/of/verifyMemberNo/${no}`)
+      request.post(`/of/verifyMemberNo`, data)
           .then(res => resolve(res))
     })
   },

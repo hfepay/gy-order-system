@@ -60,7 +60,7 @@
             size="small"
             plain
             type="primary">
-            提交订单
+            去支付
         </van-button>
     </view>
 </view>

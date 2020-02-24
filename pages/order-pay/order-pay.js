@@ -16,15 +16,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function ({orderId}) {
-    this.getOrderDetail(orderId)
-        .then(orderDetail => {
-          this.setData({
-            orderDetail
-          })
-        })
+    this.initData()
+    this.calcMoney()
   },
   onShow(){
     this.initAddress()
+  },
+  initData(){
+    const pages = getCurrentPages()
+    const length = pages.length
+    const {orderDetail,merchant,params} = pages[length-2].data
+    const  businessAddress = merchant.address
+    const  businessMobile = merchant.mobile
+    const  orderBusName = merchant.businessName
+    const  businessId = merchant.id
+    const data = {
+      ...orderDetail,
+      orderBusName,
+      businessAddress,
+      businessMobile,
+      businessId,
+      transportType:DELIVERY_TYPE.DELIVERY,
+      ...params
+    }
+    this.setData({
+      orderDetail:data
+    })
   },
   handleInput(e){
     const val = e.detail
@@ -49,15 +66,15 @@ Page({
         )
   },
   getCalcMoneyData(){
-    const foodDetail = this.data.orderDetail.details.map(item => {
+    /*const foodDetail = this.data.orderDetail.foodDetail.map(item => {
       return {
-        id: item.foodId,
-        foodNum:item.foodNumber,
-        transportType:this.data.orderDetail.transportType
+        id: item.id,
+        foodNum:item.foodNumber
       }
-    })
-    const businessId = this.data.orderDetail.businessId
+    })*/
+    const { businessId, transportType, foodDetail} = this.data.orderDetail
     return {
+      transportType,
       businessId,
       foodDetail
     }
@@ -69,9 +86,11 @@ Page({
     this.calcMoney()
   },
   initAddress(){
-    if(app.globalData.address){
+    const address = app.globalData.address
+    if(address){
+      const orderDetail = {...this.data.orderDetail,...address,id:''}
       this.setData({
-        address: app.globalData.address
+        orderDetail
       })
     }
   },
@@ -88,15 +107,19 @@ Page({
   },
   submit(){
     if(!this.validateForm())return
-    API.pay(
-        {
-        foodDetail:this.data.orderDetail.details,
-        ...this.data.address,
-        orderId: this.data.orderDetail.id
-      }
-    ).then(_ => {
-      this.gotoOrder()
-    })
+    const data = this.getSubmitData()
+    API.addOrder(data)
+        .then(orderId => {
+          API.pay({orderId}).then(_ => {
+            this.gotoOrder()
+          })
+        })
+  },
+  getSubmitData(){
+    return {
+      ...this.data.orderDetail,
+      ...this.data.address
+    }
   },
   gotoOrder(){
     wx.switchTab({

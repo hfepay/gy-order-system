@@ -9,7 +9,9 @@
                 ￥{{commodity.price}}
             </view>
             <view class="commodity-info__num">
+                <view wx:if="{{disabled}}">X{{commodity.foodNumber ||commodity.foodNum}}</view>
                 <van-stepper
+                    wx:else
                     input-class="stepper-input"
                     plus-class="stepper-icon stepper-icon__plus"
                     minus-class="stepper-icon stepper-icon__minus"

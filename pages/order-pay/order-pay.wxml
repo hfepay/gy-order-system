@@ -8,7 +8,7 @@
         </hf-switch>
     </view>
     <view>
-        <van-cell title="订单编号"  value="{{orderDetail.orderNo}}" ></van-cell>
+<!--        <van-cell title="订单编号"  value="{{orderDetail.orderNo}}" ></van-cell>-->
         <block
             wx:if="{{orderDetail.transportType == 1}}"
         >
@@ -17,7 +17,7 @@
                 label="商家电话   {{orderDetail.businessMobile}}"
             >
             </van-cell>
-            <van-cell title="自取时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
+            <van-cell title="自取时间" value="{{orderDetail.distributeDate}} {{orderDetail.distributeTime}}"></van-cell>
             <van-field
                     maxlength="11"
                     type="number"
@@ -36,48 +36,49 @@
                     title="收货地址"
                     is-link
                     url="/pages/address/address?type=choose"
-                    label="{{order.addrName}}   {{order.addrMobile}}"
-                    value="{{address.addrMore}}">
+                    value="{{orderDetail.addrMore}}">
+<!--                label="{{orderDetail.addrName}}   {{orderDetail.addrMobile}}"-->
             </van-cell>
-            <van-cell title="配送时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
+            <van-cell title="配送时间" value="{{orderDetail.distributeDate}} {{orderDetail.distributeTime}}"></van-cell>
         </block>
     </view>
     <view class="content-bg mt__primary">
         <van-cell title="{{orderDetail.orderBusName}}"></van-cell>
         <merchandise
-                wx:for="{{orderDetail.details}}"
+                wx:for="{{orderDetail.foodDetail}}"
                 wx:key="index"
                 wx:index="{{index}}"
+                disabled="{{true}}"
                 commodity="{{item}}"
                 bind:numChange="numChange">
         </merchandise>
     </view>
     <van-cell-group>
-        <van-cell title="商品总额" value="￥{{moneyInfo.beforeDiscount || orderDetail.orderAmount}}"></van-cell>
-        <van-cell wx:if="{{orderDetail.transportType == 0}}" title="配送费" value="￥{{orderDetail.transportFee}}"></van-cell>
-        <van-cell title="优惠金额" value="-￥{{orderDetail.discountAmount}}"></van-cell>
+        <van-cell title="商品总额" value="￥{{moneyInfo.beforeDiscount}}"></van-cell>
+        <van-cell wx:if="{{orderDetail.transportType == 0}}" title="配送费" value="￥{{moneyInfo.transportFee}}"></van-cell>
+        <van-cell title="优惠金额" value="-￥{{moneyInfo.discountAmount}}"></van-cell>
         <view class="pay-actual mb20 content-bg">
-            实付款：<text class="actual-money">￥{{moneyInfo.afterDiscount || orderDetail.payAmount}}</text>
+            实付款：<text class="actual-money">￥{{moneyInfo.payAmount}}</text>
         </view>
     </van-cell-group>
 
     <van-cell-group>
         <van-field
-                maxlength="200"
-                data-key="memberRemark"
-                bindchange="handleInput"
-                input-align="right"
-                value="{{ orderDetail.memberRemark }}"
-                label="订单备注"
-                right-icon="arrow"
-                border="{{ false }}"
+            maxlength="200"
+            data-key="memberRemark"
+            bindchange="handleInput"
+            input-align="right"
+            value="{{ orderDetail.memberRemark }}"
+            label="订单备注"
+            right-icon="arrow"
+            border="{{ false }}"
         />
     </van-cell-group>
 </view>
 <view class="submit-bar bg-primary">
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>
-        <text class="total-price__num">￥{{moneyInfo.afterDiscount || orderDetail.payAmount}}元</text><text class="total-price__original">{{moneyInfo.beforeDiscount || orderDetail.orderAmount}}</text>
+        <text class="total-price__num">￥{{moneyInfo.payAmount}}元</text><text class="total-price__original">{{moneyInfo.beforeDiscount}}</text>
     </view>
     <view class="">
         <van-button bindtap="submit" custom-class="submit-btn" round size="small" plain type="primary">确认支付</van-button>

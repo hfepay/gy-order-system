@@ -12,8 +12,8 @@
 
 .switch-container .text{
     z-index: 2;
-    margin: 10rpx 29rpx;
-    font-size:32rpx;
+    margin: 5px 14px;
+    font-size:16px;
     font-weight:bold;
     color:white;
     box-sizing: border-box;

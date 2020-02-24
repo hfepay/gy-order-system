@@ -14,7 +14,6 @@ Page({
       "staffOneDepartment" : "", // 一级部门
       "staffNo" : "", // 员工编号
       "staffType" : 1, // 会员类型:1:集团员工：2:驻场单位
-      "openId" : "", // 微信opend
       "memberNo" : "",
     },
     // 身份证是否验证成功
@@ -56,14 +55,15 @@ Page({
     API.updateInfo({staffNo, mobile})
         .then(res => {
           wx.showToast({
-            title: res.message,
+            title: '修改成功',
             icon: 'none',
           })
         })
   },
   validateIdcard(){
     const memberNo = this.data.form.memberNo
-    API.verifyMemberNo(memberNo)
+    const openId = this.data.params.openId
+    API.verifyMemberNo({ openId, identity:memberNo})
         .then(res => {
           this.setData({
             form:{...res,memberNo},
