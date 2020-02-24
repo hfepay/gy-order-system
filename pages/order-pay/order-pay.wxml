@@ -13,8 +13,8 @@
             wx:if="{{orderDetail.transportType == 1}}"
         >
             <van-cell
-                title="todo机场T1航站楼到达大厅404肯德基店"
-                label="商家电话   13923815540"
+                title="{{orderDetail.businessAddress}}"
+                label="商家电话   {{orderDetail.businessMobile}}"
             >
             </van-cell>
             <van-cell title="自取时间" value="{{orderDetail.distributionDate}} {{orderDetail.distributionTime}}"></van-cell>
@@ -53,11 +53,11 @@
         </merchandise>
     </view>
     <van-cell-group>
-        <van-cell title="商品总额" value="￥144.00"></van-cell>
-        <van-cell wx:if="{{orderDetail.transportType == 0}}" title="配送费" value="￥7.00"></van-cell>
-        <van-cell title="优惠金额" value="-￥14.50"></van-cell>
+        <van-cell title="商品总额" value="￥{{moneyInfo.beforeDiscount || orderDetail.orderAmount}}"></van-cell>
+        <van-cell wx:if="{{orderDetail.transportType == 0}}" title="配送费" value="￥{{orderDetail.transportFee}}"></van-cell>
+        <van-cell title="优惠金额" value="-￥{{orderDetail.discountAmount}}"></van-cell>
         <view class="pay-actual mb20 content-bg">
-            实付款：<text class="actual-money">￥129.50</text>
+            实付款：<text class="actual-money">￥{{moneyInfo.afterDiscount || orderDetail.payAmount}}</text>
         </view>
     </van-cell-group>
 

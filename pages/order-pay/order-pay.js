@@ -53,7 +53,7 @@ Page({
       return {
         id: item.foodId,
         foodNum:item.foodNumber,
-        transportType:DELIVERY_TYPE.SELF_PICK
+        transportType:this.data.orderDetail.transportType
       }
     })
     const businessId = this.data.orderDetail.businessId
@@ -66,7 +66,7 @@ Page({
     this.setData({
       'orderDetail.transportType':e.detail?DELIVERY_TYPE.SELF_PICK:DELIVERY_TYPE.DELIVERY,
     })
-    //this.calcMoney()
+    this.calcMoney()
   },
   initAddress(){
     if(app.globalData.address){
@@ -83,7 +83,11 @@ Page({
           })
         })
   },
+  validateForm(){
+    return true
+  },
   submit(){
+    if(!this.validateForm())return
     API.pay(
         {
         foodDetail:this.data.orderDetail.details,

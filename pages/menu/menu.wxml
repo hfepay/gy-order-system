@@ -11,8 +11,8 @@
         </view>
     </view>
     <van-cell-group>
-        <van-cell title="商家地址" input-align="right" value="xxxxxxxxxxxxxxxx"/>
-        <van-cell title="商家电话" input-align="right" value="13888888888"/>
+        <van-cell title="商家地址" input-align="right" value="{{merchant.address}}"/>
+        <van-cell title="商家电话" input-align="right" value="{{merchant.mobile}}"/>
     </van-cell-group>
     <van-divider wx:if="{{menuList.length === 0}}" content-position="center">暂无数据</van-divider>
     <view wx:else class="menu-list mt__primary ">
@@ -27,7 +27,7 @@
             thumb="{{item.foodImg}}"
         >
             <view slot="footer">
-                <view wx:if="{{index === 0}}" class="sold-out">已停止销售</view>
+                <view wx:if="{{item.stock == 0}}" class="sold-out">已停止销售</view>
                 <image
                    wx:else
                    bindtap="addFood"

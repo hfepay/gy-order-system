@@ -17,8 +17,17 @@
             return '申诉';
         }
     }
+    function formatTransportType(type){
+        switch (type) {
+            case 0:
+            return '配送';
+            case 1:
+            return '自取';
+            }
+    }
     module.exports = {
         formatStatus : formatStatus,
+        formatTransportType : formatTransportType
     }
 </wxs>
 <wxs module="food" src="../wxs/food.wxs"></wxs>
@@ -36,11 +45,11 @@
     <van-cell-group custom-class="mt20 mb20">
         <van-cell title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
 
-        <van-cell title="取餐方式" desc-class="fs28" value="todo"/>
+        <van-cell title="取餐方式" desc-class="fs28" value="{{format.formatTransportType(order.transportType)}}"/>
         <!--自取-->
         <block wx:if="{{selfPick}}">
-            <van-cell title="自取时间" value-class="fs28" value="2020-02-12 早餐 8:00"/>
-            <van-cell title="预留手机" value-class="fs28" value="13066831003"/>
+            <van-cell title="自取时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
+            <van-cell title="预留手机" value-class="fs28" value="{{order.addrMobile}}"/>
         </block>
 <!--        配送-->
         <block wx:else>
@@ -69,7 +78,7 @@
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="{{order.payDate}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.orderAmount}}"/>
 
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="配送费" wx:if="{{!selfPick}}" value="todo"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="配送费" wx:if="{{!selfPick}}" value="{{order.transportFee}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="￥{{order.discountAmount}}"/>
     </van-cell-group>
     <view class="actually-money-info fs32 content-bg">
@@ -77,7 +86,7 @@
         <text class="actually-money__value">￥{{order.payAmount}}</text>
     </view>
     <van-cell-group>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="订单备注" value="todo"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="订单备注" value="{{order.memberRemark}}"/>
     </van-cell-group>
     <view class="btn-container content-bg">
         <!--        已下单 已配送-->
