@@ -18,6 +18,7 @@ Page({
     menuList: [],
     allFoodNum: 0,
     moneyInfo:{
+      payAmount: '',
       afterDiscount: '',
       beforeDiscount: '',
       discount: '',

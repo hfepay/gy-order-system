@@ -48,7 +48,7 @@
    </view>
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>
-        <text class="total-price__num">{{moneyInfo.afterDiscount}}元</text>
+        <text class="total-price__num">{{moneyInfo.payAmount}}元</text>
         <text class="total-price__original">{{moneyInfo.beforeDiscount}}</text>
     </view>
     <view class="">
@@ -60,7 +60,7 @@
             size="small"
             plain
             type="primary">
-            去支付
+            去结算
         </van-button>
     </view>
 </view>
