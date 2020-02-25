@@ -80,3 +80,6 @@
     /*display: flex;
     justify-content: right;*/
 }
+.meal-status__inactive{
+  color: #999999!important;
+}

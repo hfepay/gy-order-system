@@ -1,6 +1,7 @@
 // pages/order-pay/order-pay.js
 const API = require('../../utils/api')
 const {DELIVERY_TYPE} = require('../../contants/constants')
+const WxValidate = require('../../utils/validate.js')
 const app = getApp()
 Page({
 
@@ -103,6 +104,29 @@ Page({
         })
   },
   validateForm(){
+    let rule = {}
+    let messages = {
+      addrMore: { required: '请选择地址' },
+      memberMobile: { required: '请输入预留手机', tel: '手机号非法' }
+    }
+    // 自取
+    if (this.data.orderDetail.transportType == DELIVERY_TYPE.SELF_PICK){
+      rule.memberMobile = { required: true, tel: true}
+      rule.addrMore = {}
+      }else{
+      rule.memberMobile = {}
+      rule.addrMore = { required: true}
+    }
+    const wxValidate = new WxValidate(rule, messages)
+    // 传入表单数据，调用验证方法
+    if (!wxValidate.checkForm(this.data.orderDetail)) {
+      const error = wxValidate.errorList[0]
+      wx.showToast({
+        title: error.msg,
+        icon: 'none'
+      })
+      return false
+    }
     return true
   },
   submit(){

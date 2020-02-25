@@ -37,7 +37,7 @@
                 <view class="meal__name__time">{{food.formatDistributeType(item.distributeType)}} {{item.distributeTime}}</view>
                 <view class="meal__desc" wx:if="{{item.isCutoff == 1}}">距离截止还有{{item.cutOffHours}}小时{{item.cutOffMins}}分</view>
             </view>
-            <view class="meal-status arrow-content">
+            <view class="meal-status arrow-content {{item.isCutoff != 1?'meal-status__inactive':''}}">
                 {{food.formatCutoff(item.isCutoff)}}
                 >
             </view>

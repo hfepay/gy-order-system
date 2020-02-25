@@ -43,7 +43,8 @@
         </navigator>
     </van-cell-group>
     <van-cell-group custom-class="mt20 mb20">
-        <van-cell title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
+        <van-cell wx:if="{{order.transportType == 1}}" title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
+        <van-cell wx:else="{{order.transportType == 1}}" title="{{order.businessAddress}}" desc-class="fs28" label="{{order.orderBusName}}   {{order.businessMobile}}"/>
 
         <van-cell title="取餐方式" desc-class="fs28" value="{{format.formatTransportType(order.transportType)}}"/>
         <!--自取-->
@@ -76,7 +77,7 @@
     <van-cell-group>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="下单时间" value="{{order.createTime}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="支付时间" value="{{order.payDate}}"/>
-        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.orderAmount}}"/>
+        <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="商品总额" value="￥{{order.goodsAmount}}"/>
 
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="配送费" wx:if="{{!selfPick}}" value="￥{{order.transportFee}}"/>
         <van-cell border="{{false}}" title-class="cell-title" value-class="cell-value" title="优惠金额" value="-￥{{order.discountAmount}}"/>
