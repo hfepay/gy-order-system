@@ -9,8 +9,6 @@ Page({
     timeList: [],
     foodList: [],
   },
-  onLoad: function () {
-  },
   onShow: function () {
     this.checkLogin()
   },
@@ -40,11 +38,19 @@ Page({
   initTimeList(){
     const timeList = [...new Array(7).keys()].map((item,index) => {
       const date = new Date(Date.now() + 24*60*60*1000*index)
+      const day = formatTime(date, 'yyyy-MM-dd')
+      const week = formatTime(date, 'EE')
+      let selected = false
+      if(app.globalData.day){
+        selected = day === app.globalData.day
+      }else{
+        selected = index === 0
+      }
       return {
-        day:formatTime(date, 'yyyy-MM-dd'),
+        day,
         date:formatTime(date, 'MM-dd'),
-        week:formatTime(date, 'EE'),
-        selected: index === 0 ? true: false
+        week,
+        selected: selected
       }
     })
     this.setData({
@@ -59,6 +65,7 @@ Page({
         selected: i === index
       }
     })
+    app.globalData.day = this.data.timeList[index].day
     this.setData({
       timeList
     })
@@ -78,10 +85,10 @@ Page({
     return this.data.timeList.find(item => item.selected).day
   },
   toMenuPage:function(e){
-    const { distributeType, distributeTime } = e.currentTarget.dataset.item
+    const { distributeType, distributeTime, isCutoff } = e.currentTarget.dataset.item
     const distributeDate = this.getSelectDay()
     wx.navigateTo({
-      url: `/pages/menu/menu?distributeType=${distributeType}&distributeDate=${distributeDate}&distributeTime=${distributeTime}`,
+      url: `/pages/menu/menu?distributeType=${distributeType}&distributeDate=${distributeDate}&distributeTime=${distributeTime}&isCutoff=${isCutoff}`,
     })
   }
 })

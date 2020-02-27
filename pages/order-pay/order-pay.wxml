@@ -41,6 +41,7 @@
             </van-cell>
             <van-cell title="配送时间" value="{{orderDetail.distributeDate}} {{orderDetail.distributeTime}}"></van-cell>
         </block>
+        <van-cell title="支付方式" is-link bind:click="selectPayType"/>
     </view>
     <view class="content-bg mt__primary">
         <van-cell title="{{orderDetail.orderBusName}}"></van-cell>
@@ -75,6 +76,12 @@
         />
     </van-cell-group>
 </view>
+<van-action-sheet
+        show="{{ showPayType }}"
+        actions="{{ payTypeList }}"
+        bind:close="onClose"
+        bind:select="onSelect"
+/>
 <view class="submit-bar bg-primary">
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>

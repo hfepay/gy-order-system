@@ -4,6 +4,7 @@
     "van-cell-group": "@vant/weapp/cell-group",
     "van-cell": "@vant/weapp/cell",
     "van-switch": "@vant/weapp/switch",
+    "van-action-sheet": "@vant/weapp/action-sheet",
     "van-tabs": "@vant/weapp/tabs",
     "van-tab": "@vant/weapp/tab",
     "van-button": "@vant/weapp/button",

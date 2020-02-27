@@ -8,7 +8,7 @@
     height: 98rpx;
     color: white;
     padding: 0 32rpx;
-    z-index: 111;
+    z-index: 99;
 }
 .icon-container{
     position: relative;

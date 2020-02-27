@@ -1,6 +1,6 @@
 // pages/order-pay/order-pay.js
 const API = require('../../utils/api')
-const {DELIVERY_TYPE} = require('../../contants/constants')
+const {DELIVERY_TYPE, PAY_TYPE} = require('../../contants/constants')
 const WxValidate = require('../../utils/validate.js')
 const app = getApp()
 Page({
@@ -9,19 +9,42 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showPayType: false,
     moneyInfo: {},
     orderDetail: {},
-    address: {}
+    address: {},
+    payTypeList: [
+      {
+        value: '0',
+        name: '微信支付'
+      },
+      {
+        value: '1',
+        name: '线下支付'
+      }
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function ({orderId}) {
+    this.initPayTypeList()
     this.initData()
     this.calcMoney()
   },
   onShow(){
     this.initAddress()
+  },
+  initPayTypeList(){
+    const payTypeList = Object.keys(PAY_TYPE).map(key => {
+      return {
+        value:key,
+        name: PAY_TYPE[key]
+      }
+    })
+    this.setData({
+      payTypeList
+    })
   },
   initData(){
     const pages = getCurrentPages()
@@ -147,6 +170,19 @@ Page({
                     })
                 })
         })
+  },
+  selectPayType(){
+      this.setData({
+        showPayType: true
+      })
+  },
+  onClose() {
+    this.setData({ showPayType: false });
+  },
+
+  onSelect(event) {
+    console.log(event.detail);
+    this.onClose()
   },
   getSubmitData(){
     return {

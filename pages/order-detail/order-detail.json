@@ -4,6 +4,7 @@
     "van-cell-group": "@vant/weapp/cell-group",
     "van-cell": "@vant/weapp/cell",
     "van-button": "@vant/weapp/button",
+    "van-count-down": "@vant/weapp/count-down",
     "van-icon": "@vant/weapp/icon",
     "van-card": "@vant/weapp/card"
   }

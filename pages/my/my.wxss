@@ -32,3 +32,9 @@
 .logout{
   font-weight:bold
 }
+.inactive-tips{
+  padding: 0px 16px 10px;
+  font-size: 24rpx;
+  background: white;
+  color:red
+}

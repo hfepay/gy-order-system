@@ -11,6 +11,9 @@
       <view class="phone">手机号:{{userInfo.mobile}}</view>
     </view>
   </view>
+  <view class="inactive-tips" wx:if="{{userInfo.status == 0}}">
+    账号被冻结中，无法下单
+  </view>
   <view class="cell-container">
     <van-cell title="我的资料" is-link url="/pages/my-info/my-info"/>
     <van-cell title="收货地址" is-link url="/pages/address/address"/>

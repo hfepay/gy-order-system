@@ -1,6 +1,7 @@
 // pages/menu/menu.js
 const API = require('../../utils/api')
 const {DELIVERY_TYPE} = require('../../contants/constants')
+const {MEAL_STATUS} = require('../../contants/constants')
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
   data: {
     merchant: {},
     params: {
+      isCutoff: '',
       distributeType: '',
       distributeTime: '',
       distributeDate: ''
@@ -27,6 +29,21 @@ Page({
     orderDetail: {
       foodDetail:[],
     },
+    // 是否能添加
+    canBook: true
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.data.params = options
+    if(this.data.params.isCutoff != MEAL_STATUS.BOOKING){
+        this.setData({
+          canBook: false
+        })
+    }
+    this.initMerchant()
   },
   addFood(e){
     const {food} = e.currentTarget.dataset
@@ -131,13 +148,6 @@ Page({
       this.setData({
         showShoppingCart: true
       })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.data.params = options
-    this.initMerchant()
   },
   initMerchant() {
     const merchant = wx.getStorageSync('merchant')

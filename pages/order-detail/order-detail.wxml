@@ -34,6 +34,11 @@
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
+        <van-count-down
+                style="margin-left: 40rpx"
+                time="{{ 1000 * 60 * 15 }}"
+                format="mm 分 ss 秒"
+        />
     </view>
     <van-cell-group>
         <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}&orderNo={{order.orderNo}}">
