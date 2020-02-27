@@ -67,12 +67,6 @@ Page({
         )
   },
   getCalcMoneyData(){
-    /*const foodDetail = this.data.orderDetail.foodDetail.map(item => {
-      return {
-        id: item.id,
-        foodNum:item.foodNumber
-      }
-    })*/
     const { businessId, transportType, foodDetail} = this.data.orderDetail
     return {
       transportType,
@@ -134,9 +128,24 @@ Page({
     const data = this.getSubmitData()
     API.addOrder(data)
         .then(orderId => {
-          API.pay({orderId}).then(_ => {
-            this.gotoOrder()
-          })
+            API.pay({orderId}).then(_ => {
+                this.gotoOrder()
+            })
+            return
+            API.getPayInfo()
+                .then(info => {
+                    wx.requestPayment({
+                        ...info,
+                        'success':(res) =>{
+                            API.pay({orderId}).then(_ => {
+                                this.gotoOrder()
+                            })
+                        },
+                        'complete':(res) =>{
+                            console.log(res)
+                        }
+                    })
+                })
         })
   },
   getSubmitData(){

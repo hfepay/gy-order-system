@@ -43,8 +43,8 @@
         </navigator>
     </van-cell-group>
     <van-cell-group custom-class="mt20 mb20">
-        <van-cell wx:if="{{order.transportType == 1}}" title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
-        <van-cell wx:else="{{order.transportType == 1}}" title="{{order.businessAddress}}" desc-class="fs28" label="{{order.orderBusName}}   {{order.businessMobile}}"/>
+        <van-cell wx:if="{{order.transportType == 0}}" title="{{order.addrMore}}" desc-class="fs28" label="{{order.addrName}}   {{order.addrMobile}}"/>
+        <van-cell wx:else title="{{order.businessAddress}}" desc-class="fs28" label="{{order.orderBusName}}   {{order.businessMobile}}"/>
 
         <van-cell title="取餐方式" desc-class="fs28" value="{{format.formatTransportType(order.transportType)}}"/>
         <!--自取-->

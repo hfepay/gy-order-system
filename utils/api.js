@@ -203,6 +203,14 @@ const API = {
           .then(res => resolve(res))
     })
   },
+  getPayInfo:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      resolve(data)
+      return
+      request.post(`/ofMember/modifInfo`, data)
+          .then(res => resolve(res))
+    })
+  },
 }
 
 
