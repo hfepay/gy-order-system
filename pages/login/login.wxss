@@ -27,7 +27,7 @@ view{
 .name{
   font-size:54rpx;
   line-height:101rpx;
-  margin-bottom: 43rpx;
+  /* margin-bottom: 43rpx; */
   color:var(--text-color);
 }
 .login-btn{
@@ -42,4 +42,20 @@ view{
   color:var(--text-color);
   line-height:91rpx;
   font-weight:bold;
+}
+
+.intro{
+  color: #E60012;
+  font-style: italic;
+  font-size: 48rpx;
+  font-weight: bold;
+  line-height: 80rpx
+}
+.desc{
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 60rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
 }

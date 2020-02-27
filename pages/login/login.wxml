@@ -8,6 +8,11 @@
     <image mode="aspectFill" src="/static/image/logo/logo.png"></image>
   </view>
   <view class="row name">黔易订</view>
+  <view class="intro">线上订餐 方便快捷</view>
+  <view class="desc">
+    <van-icon name="warning" style="margin:0 10rpx" color="#01729E"/>
+      仅供贵阳升级长集团内部员工使用
+  </view>
   <login bind:login="login">
     <view class="login-btn bg-primary">
       微信用户一键登录
