@@ -10,8 +10,8 @@
   <view class="row name">黔易订</view>
   <view class="intro">线上订餐 方便快捷</view>
   <view class="desc">
-    <van-icon name="warning" style="margin:0 10rpx" color="#01729E"/>
-      仅供贵阳升级长集团内部员工使用
+    <van-icon name="warning" style="margin:0 10rpx" color="var(--primary)"/>
+      仅供贵阳省机场集团内部员工使用
   </view>
   <login bind:login="login">
     <view class="login-btn bg-primary">
