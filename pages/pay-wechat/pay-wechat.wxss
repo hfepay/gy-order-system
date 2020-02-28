@@ -1,0 +1,26 @@
+.pay-time,.bussiness-info{
+    font-size:26rpx;
+    color:rgba(169,169,169,1);
+}
+.pay-money{
+    font-size:80rpx;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+}
+.pay-money text{
+    font-size:40rpx;
+}
+.bussiness-info{}
+.submit-btn-container{
+    margin-top: 67rpx;
+}
+.cell-class{
+    background-color: #F6F7F9!important;
+    align-items: center;
+}
+
+.cell-title-class{
+    font-size: 28rpx!important;
+    font-weight: lighter!important;
+    margin-left: 16rpx;
+}

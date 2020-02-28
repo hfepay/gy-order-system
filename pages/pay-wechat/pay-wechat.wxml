@@ -1,0 +1,34 @@
+<view style="text-align: center;padding: 68rpx 0;">
+    <view class="pay-time">支付剩余时间  14:56</view>
+    <view class="pay-money"><text>￥</text>136.50</view>
+    <view class="bussiness-info">肯德基贵州龙洞堡机场店-13066831003</view>
+</view>
+<view class="pay-type">
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+        <van-cell-group >
+            <van-cell
+                    custom-class="cell-class"
+                    title-class="cell-title-class"
+                    title="微信支付"
+                    clickable
+                    data-name="1"
+                    bind:click="onClick"
+            >
+
+                <image slot="icon" src="/static/image/icon/wechat.png" style="width: 40rpx;height: 40rpx;"/>
+                <van-radio  slot="right-icon" name="1" checked-color="var(--primary)">
+                </van-radio>
+            </van-cell>
+        </van-cell-group>
+    </van-radio-group>
+</view>
+<view class="submit-btn-container">
+    <van-button
+            custom-class="submit-btn"
+            bindtap="submit"
+            type="primary"
+            block
+            round>
+        确认支付
+    </van-button>
+</view>

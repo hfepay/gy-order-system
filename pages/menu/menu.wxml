@@ -7,7 +7,7 @@
         <view class="merchant-desc">
             <view class="merchant-name">{{merchant.businessName}}</view>
             <view class="merchant-sell-num">已售{{merchant.saledNum}}份</view>
-            <view class="merchant-meal-type">{{merchant.description}}</view>
+            <view class="merchant-meal-type">todo起送￥0  配送￥7</view>
         </view>
     </view>
     <van-cell-group>
@@ -42,9 +42,8 @@
 </view>
 <view class="submit-bar bg-primary" hidden="{{orderDetail.foodDetail.length === 0}}">
     <view class="icon-container" bindtap="showShoppingCart">
-    <image mode="aspectFill" src="/static/image/icon/shopping-cart.png" style="width: 93rpx;height: 62rpx;"></image>
-    <van-info info="{{allFoodNum}}">
-    </van-info>
+    <image mode="aspectFill" src="/static/image/logo/shopping-car.png" style="width: 139rpx;height: 172rpx;margin-bottom: 54rpx;"></image>
+    <text class="food-num">{{allFoodNum}}</text>
    </view>
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>

@@ -40,7 +40,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    height: 98rpx;
+    height: 142rpx;
     color: white;
     padding: 0 32rpx;
     z-index: 111;
@@ -93,5 +93,20 @@
     font-size:28rpx;
     font-weight:bold;
     color:rgba(214,0,0,1);
+}
+.food-num{
+  color: white;
+  background-color: #E5011A;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100rpx;
+  box-sizing: content-box;
+  right: -10rpx;
+  padding: 10rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  height: 43rpx;
+  width: 43rpx;
+  text-align: center;
 }
 

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/pay-wechat/pay-wechat",
+    "pages/pay-result/pay-result",
     "pages/order-pay/order-pay",
     "pages/test/test",
     "pages/order/order",

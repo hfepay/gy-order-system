@@ -1,0 +1,17 @@
+<!--pages/pay-result/pay-result.wxml-->
+<view style="text-align: center">
+    <image class="result-img" mode="aspectFill" src="/static/image/icon/success.png"></image>
+    <view class="order-status">您的订单已取消</view>
+    <view class="order-desc">您的退款申请已移交审核中</view>
+    <view class="order-no">订单编号：2019041920011</view>
+    <navigator url="/pages/order/order" open-type="switchTab">
+        <van-button
+                custom-class="submit-btn"
+                bindtap="submit"
+                type="primary"
+                block
+                round>
+            确认
+        </van-button>
+    </navigator>
+</view>

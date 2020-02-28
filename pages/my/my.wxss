@@ -33,8 +33,10 @@
   font-weight:bold
 }
 .inactive-tips{
-  padding: 0px 16px 10px;
+  padding-left: 198rpx;
+  padding-bottom: 20rpx;
   font-size: 24rpx;
   background: white;
-  color:red
+  color:#D60000;
+  margin-top: -20px;
 }

@@ -2,6 +2,7 @@ page{
   --black:black;
   --grey:#999999;
   --primary:#01729E;
+  --count-down-text-color:#D60000;
   --button-primary-background-color: var(--primary);
   --switch-on-background-color: var(--primary);
   --tabs-bottom-bar-color: var(--primary);

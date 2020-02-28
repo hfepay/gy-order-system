@@ -34,11 +34,14 @@
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
+        <view class="pay-time">（剩余支付时间
         <van-count-down
-                style="margin-left: 40rpx"
-                time="{{ 1000 * 60 * 15 }}"
-                format="mm 分 ss 秒"
-        />
+                  time="{{ 1000 * 60 * 15 }}"
+                  format="mm 分 ss 秒"
+          />
+          )
+        </view>
+        
     </view>
     <van-cell-group>
         <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}&orderNo={{order.orderNo}}">
@@ -61,6 +64,7 @@
         <block wx:else>
             <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
         </block>
+        <van-cell title="支付方式" value-class="fs28" value="todo"/>
         </van-cell-group>
     <van-cell-group>
         <van-cell title="{{order.orderBusName}}"/>
