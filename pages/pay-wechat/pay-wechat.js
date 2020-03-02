@@ -51,7 +51,7 @@ Page({
         })
   },
   confirmOrder(orderId){
-    API.finishOrder(orderId)
+    API.pay(orderId)
         .then(_ => {
           wx.switchTab({
             url: '/pages/order/order',

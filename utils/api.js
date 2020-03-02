@@ -167,12 +167,12 @@ const API = {
           .then(res => resolve(res))
     })
   },
-    finishOrder:(id) => {
-        return getPromiseInstance((resolve,reject) => {
-            request.post(`/food/finishedOrder/${id}`)
-                .then(res => resolve(res))
-        })
-    },
+  finishOrder:(id) => {
+      return getPromiseInstance((resolve,reject) => {
+          request.post(`/food/finishedOrder/${id}`)
+              .then(res => resolve(res))
+      })
+  },
   calculatePrice:(data) => {
     return getPromiseInstance((resolve,reject) => {
       request.post(`/food/calculatePrice`, data)
