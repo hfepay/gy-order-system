@@ -149,6 +149,12 @@ const API = {
           .then(res => resolve(res))
     })
   },
+  getOrderList:(data) => {
+    return getPromiseInstance((resolve,reject) => {
+      request.post(`/ofMemberOrder/list`, data)
+          .then(res => resolve(res))
+    })
+  },
   cancelOrder:(id) => {
     return getPromiseInstance((resolve,reject) => {
       request.post(`/food/cancelOrder/${id}`)
@@ -203,11 +209,9 @@ const API = {
           .then(res => resolve(res))
     })
   },
-  getPayInfo:(data) => {
+  getPayInfo:(orderId) => {
     return getPromiseInstance((resolve,reject) => {
-      resolve(data)
-      return
-      request.post(`/ofMember/modifInfo`, data)
+      request.post(`/pay/wechatUnifiedorder/${orderId}`)
           .then(res => resolve(res))
     })
   },

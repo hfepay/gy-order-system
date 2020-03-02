@@ -1,3 +1,4 @@
+<wxs module="order" src="../../pages/wxs/order.wxs"></wxs>
 <view style="margin-bottom: 118rpx;">
     <view class="switch-container">
         <hf-switch
@@ -41,7 +42,7 @@
             </van-cell>
             <van-cell title="配送时间" value="{{orderDetail.distributeDate}} {{orderDetail.distributeTime}}"></van-cell>
         </block>
-        <van-cell title="支付方式" is-link bind:click="selectPayType"/>
+        <van-cell title="支付方式" is-link bind:click="selectPayType" value="{{order.formatPayType(orderDetail.payType)}}"/>
     </view>
     <view class="content-bg mt__primary">
         <van-cell title="{{orderDetail.orderBusName}}"></van-cell>

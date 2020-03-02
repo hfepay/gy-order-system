@@ -13,15 +13,19 @@
     height: 170rpx;
 }
 .merchant-list .merchant-item .merchant-desc{
-    line-height: 85rpx;
+    line-height: 58rpx;
     flex: 1;
 }
+
 .merchant-list .merchant-item .merchant-desc .merchant-name{
     font-size:32rpx;
     font-weight:bold;
     color: var(--black);
 }
-.merchant-list .merchant-item .merchant-desc .merchant-sell-num{
+.merchant-list .merchant-item .merchant-desc .merchant-sell-num,.merchant-payinfo{
     font-size:28rpx;
     color: var(--grey);
+}
+.merchant-list .merchant-item .merchant-desc .merchant-payinfo{
+    font-size:24rpx;
 }

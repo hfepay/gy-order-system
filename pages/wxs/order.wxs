@@ -1,4 +1,4 @@
-//1:待付款 2：已下单，3已配送， 4，已完成 5，已取消 6，申诉
+//1:待付款 2：已下单，3已配送， 4，已完成 5，已取消 6，申诉， 7，退款审核中， 8 退款中 9 ， 退款陈功， 10，退款失败 11退款不通
 function formatStatus(type){
     switch (type) {
         case 1:
@@ -13,8 +13,27 @@ function formatStatus(type){
             return '已取消';
         case 6:
             return '申诉';
+        case 7:
+            return '退款审核中';
+        case 8:
+            return '退款中';
+        case 9:
+            return '退款成功';
+        case 10:
+            return '退款失败';
+        case 11:
+            return '退款不通';
+    }
+}
+function formatPayType(type) {
+    switch (type) {
+        case "1":
+            return '微信支付';
+        case "2":
+            return '线下支付';
     }
 }
 module.exports = {
-    formatStatus: formatStatus
+    formatStatus: formatStatus,
+    formatPayType: formatPayType
 };

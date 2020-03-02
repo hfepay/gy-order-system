@@ -8,6 +8,7 @@
         <view class="merchant-desc">
             <view class="merchant-name">{{item.businessName}}</view>
             <view class="merchant-sell-num">已售{{item.saledNum}}份</view>
+            <view class="merchant-payinfo">todo起送￥5.00 配送￥7.00</view>
         </view>
      </view>
 </view>

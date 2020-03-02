@@ -1,7 +1,9 @@
 <!--pages/order/order.wxml-->
-<van-tabs bind:change="onTabClick" tab-active-class="fwbd">
-    <van-tab title="待完成"></van-tab>
-    <van-tab title="已完成"></van-tab>
+<van-tabs bind:change="onTabClick" tab-active-class="fwbd" active="{{activeTab}}">
+    <!--<van-tab name="{{item.name}}" title="{{item.title}}" wx:for="{{tabs}}" wx:key="index"></van-tab>-->
+    <van-tab name="unfinished" title="未完成" ></van-tab>
+    <van-tab name="done" title="已完成" ></van-tab>
+    <van-tab name="refund" title="退款" ></van-tab>
 </van-tabs>
 <van-divider wx:if="{{orderList.length === 0}}" content-position="center">暂无数据</van-divider>
 <view wx:else class="order-list">
@@ -18,3 +20,5 @@
         </navigator>
     </view>
 </view>
+<van-divider wx:if="{{loading}}" content-position="center">加载中···</van-divider>
+<van-divider wx:if="{{queryParams.current == queryParams.pages}}" content-position="center">暂无更多数据</van-divider>

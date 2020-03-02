@@ -1,6 +1,6 @@
 // pages/order-pay/order-pay.js
 const API = require('../../utils/api')
-const {DELIVERY_TYPE, PAY_TYPE} = require('../../contants/constants')
+const {DELIVERY_TYPE, PAY_TYPE, PAY_TYPE_ENUM} = require('../../contants/constants')
 const WxValidate = require('../../utils/validate.js')
 const app = getApp()
 Page({
@@ -13,16 +13,7 @@ Page({
     moneyInfo: {},
     orderDetail: {},
     address: {},
-    payTypeList: [
-      {
-        value: '0',
-        name: '微信支付'
-      },
-      {
-        value: '1',
-        name: '线下支付'
-      }
-    ]
+    payTypeList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -151,25 +142,41 @@ Page({
     const data = this.getSubmitData()
     API.addOrder(data)
         .then(orderId => {
-            API.pay({orderId}).then(_ => {
-                this.gotoOrder()
-            })
-            return
-            API.getPayInfo()
+          const cb = data.payType == PAY_TYPE_ENUM.WECHAT ? new Promise(resolve => {
+            API.getPayInfo(orderId)
                 .then(info => {
-                    wx.requestPayment({
-                        ...info,
-                        'success':(res) =>{
-                            API.pay({orderId}).then(_ => {
-                                this.gotoOrder()
-                            })
-                        },
-                        'complete':(res) =>{
-                            console.log(res)
-                        }
-                    })
+                  debugger
+                  const options = {
+                    timeStamp: '',
+                    nonceStr: '',
+                    package: '',
+                    signType: 'MD5',
+                    paySign: '',
+                    success (res) { },
+                    fail (res) { }
+                  }
+                  wx.requestPayment({
+                    ...info,
+                    'success':(res) =>{
+                      API.pay({orderId}).then(_ => {
+                        this.gotoOrder()
+                      })
+                    },
+                    'complete':(res) =>{
+                      console.log("支付结果:",res)
+                    }
+                  })
                 })
+          }) : new Promise(resolve => resolve())
+          this.confirmOrder(orderId, cb)
         })
+  },
+  confirmOrder(orderId, fn){
+    fn.then(_ => {
+      API.pay({orderId}).then(_ => {
+        this.gotoOrder()
+      })
+    })
   },
   selectPayType(){
       this.setData({
@@ -181,7 +188,10 @@ Page({
   },
 
   onSelect(event) {
-    console.log(event.detail);
+    const {value, name} = event.detail
+    this.setData({
+      'orderDetail.payType':value
+    })
     this.onClose()
   },
   getSubmitData(){
