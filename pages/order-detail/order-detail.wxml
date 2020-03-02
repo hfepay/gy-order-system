@@ -1,36 +1,5 @@
-<!--<wxs module="order" src="../wxs/order.wxs"/>-->
-<!--直接引入会报错-->
-<wxs module="format">
-    function formatStatus(type){
-        switch (type) {
-            case 1:
-            return '待付款';
-            case 2:
-            return '已下单';
-            case 3:
-            return '已配送';
-            case 4:
-            return '已完成';
-            case 5:
-            return '已取消';
-            case 6:
-            return '申诉';
-        }
-    }
-    function formatTransportType(type){
-        switch (type) {
-            case 0:
-            return '配送';
-            case 1:
-            return '自取';
-            }
-    }
-    module.exports = {
-        formatStatus : formatStatus,
-        formatTransportType : formatTransportType
-    }
-</wxs>
 <wxs module="food" src="../wxs/food.wxs"></wxs>
+<wxs module="format" src="../wxs/order.wxs"></wxs>
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
@@ -64,7 +33,7 @@
         <block wx:else>
             <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
         </block>
-        <van-cell title="支付方式" value-class="fs28" value="todo"/>
+        <van-cell title="收款方式" value-class="fs28" value="{{format.formatPayType(order.payType)}}"/>
         </van-cell-group>
     <van-cell-group>
         <van-cell title="{{order.orderBusName}}"/>

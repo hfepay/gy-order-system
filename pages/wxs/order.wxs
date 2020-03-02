@@ -33,7 +33,17 @@ function formatPayType(type) {
             return '线下支付';
     }
 }
+function formatTransportType(type){
+    switch (type) {
+        case 0:
+            return '配送';
+        case 1:
+            return '自取';
+    }
+}
+
 module.exports = {
     formatStatus: formatStatus,
-    formatPayType: formatPayType
+    formatPayType: formatPayType,
+    formatTransportType: formatTransportType
 };
