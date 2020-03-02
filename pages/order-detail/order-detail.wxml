@@ -1,5 +1,5 @@
 <wxs module="food" src="../wxs/food.wxs"></wxs>
-<wxs module="format" src="../wxs/order.wxs"></wxs>
+<wxs module="format"  src="../wxs/order.wxs"></wxs>
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
@@ -34,6 +34,7 @@
             <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
         </block>
         <van-cell title="收款方式" value-class="fs28" value="{{format.formatPayType(order.payType)}}"/>
+        <image mode="aspectFit" wx:if="{{order.orderStatus > 6 && order.orderStatus < 11}}" src="{{format.formatStepImg(order.orderStatus)}}" class="step-img"></image>
         </van-cell-group>
     <van-cell-group>
         <van-cell title="{{order.orderBusName}}"/>

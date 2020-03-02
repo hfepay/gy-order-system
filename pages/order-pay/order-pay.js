@@ -145,11 +145,10 @@ Page({
           const cb = data.payType == PAY_TYPE_ENUM.WECHAT ? new Promise(resolve => {
             API.getPayInfo(orderId)
                 .then(info => {
-                  const { timeStamp, nonceStr, package, signType, paySign} = info
+                  const { timeStamp, nonceStr, signType, paySign} = info
                   wx.requestPayment({
                     timeStamp,
                     nonceStr,
-                    package,
                     signType,
                     paySign,
                     'success':(res) =>{

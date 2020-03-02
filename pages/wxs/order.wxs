@@ -42,7 +42,21 @@ function formatTransportType(type){
     }
 }
 
+function formatStepImg(type) {
+    switch (type) {
+        case 7:
+            return '/static/image/icon/refund-reviewing.png';
+        case 8:
+            return '/static/image/icon/refunding.png';
+        case 9:
+            return '/static/image/icon/refund-success.png';
+        case 10:
+            return '/static/image/icon/refund-fail.png';
+    }
+}
+
 module.exports = {
+    formatStepImg: formatStepImg,
     formatStatus: formatStatus,
     formatPayType: formatPayType,
     formatTransportType: formatTransportType

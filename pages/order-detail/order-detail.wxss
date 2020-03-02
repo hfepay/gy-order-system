@@ -50,3 +50,9 @@
   color: #999999;
   padding-top: 10rpx;
 }
+.step-img{
+    width: 670rpx;
+    height: 298rpx;
+    background: white;
+    padding: 0 40rpx;
+}
