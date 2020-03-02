@@ -123,14 +123,6 @@ Page({
     wx.navigateTo({
       url: '/pages/order-pay/order-pay',
     })
-    return
-    API.addOrder(this.getSubmitData())
-        .then(orderId => {
-          wx.navigateTo({
-            url: '/pages/order-pay/order-pay?orderId='+orderId,
-          })
-        })
-
   },
   getSubmitData(){
     const data = {

@@ -149,6 +149,7 @@ Page({
                   wx.requestPayment({
                     timeStamp,
                     nonceStr,
+                    package: info.package,
                     signType,
                     paySign,
                     'success':(res) =>{
@@ -167,8 +168,13 @@ Page({
     fn = fn || new Promise(resolve => resolve())
     fn.then(res => {
       API.pay({orderId}).then(_ => {
-        this.gotoOrder()
+        this.gotoPayResult(orderId)
       })
+    })
+  },
+  gotoPayResult(orderId){
+    wx.switchTab({
+      url: '/pages/order/order',
     })
   },
   selectPayType(){
@@ -192,15 +198,5 @@ Page({
       ...this.data.orderDetail,
       ...this.data.address
     }
-  },
-  gotoOrder(){
-    wx.switchTab({
-      url: '/pages/order/order',
-      success: function(e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return
-        page.onLoad();
-      }
-    })
   },
 })
