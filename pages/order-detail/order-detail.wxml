@@ -3,10 +3,10 @@
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
-        <view class="pay-time" wx:if="{{order.difference}}">（剩余支付时间
+        <view class="pay-time" wx:if="{{order.countdown}}">（剩余支付时间
         <van-count-down
-                  time="{{ order.difference }}"
-                  format="mm 分 ss 秒"
+                  time="{{ order.countdown }}"
+                  format="mm分ss秒"
           />
           )
         </view>

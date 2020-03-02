@@ -1,18 +1,28 @@
 // pages/pay-wechat/pay-wechat.js
+const API = require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    radio: '1'
+    radio: '1',
+    order: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function ({orderId}) {
+        this.initData(orderId)
+  },
+  initData(orderId){
+    API.getOrder(orderId)
+        .then(order => {
+          this.setData({
+            order
+          })
+        })
   },
   onChange(event) {
     console.log(event)
@@ -21,7 +31,32 @@ Page({
     });
   },
   submit(){
-
+    const orderId = this.data.order.id
+    API.getPayInfo(orderId)
+        .then(info => {
+          const { timeStamp, nonceStr, signType, paySign} = info
+          wx.requestPayment({
+            timeStamp,
+            nonceStr,
+            package: info.package,
+            signType,
+            paySign,
+            'success':(res) =>{
+              this.confirmOrder(orderId)
+            },
+            'complete':(res) =>{
+              console.log("支付结果:",res)
+            }
+          })
+        })
+  },
+  confirmOrder(orderId){
+    API.finishOrder(orderId)
+        .then(_ => {
+          wx.switchTab({
+            url: '/pages/order/order',
+          })
+        })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

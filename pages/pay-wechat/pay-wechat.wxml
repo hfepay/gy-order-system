@@ -1,7 +1,13 @@
 <view style="text-align: center;padding: 68rpx 0;">
-    <view class="pay-time">支付剩余时间  14:56</view>
-    <view class="pay-money"><text>￥</text>136.50</view>
-    <view class="bussiness-info">肯德基贵州龙洞堡机场店-13066831003</view>
+    <view class="pay-time">支付剩余时间
+        <van-count-down
+                style="margin-left: 20rpx"
+                time="{{order.countdown}}"
+                format="mm:ss"
+        />
+    </view>
+    <view class="pay-money"><text>￥</text>{{order.payAmount}}</view>
+    <view class="bussiness-info">{{order.businessAddress}}-{{order.businessMobile}}</view>
 </view>
 <view class="pay-type">
     <van-radio-group value="{{ radio }}" bind:change="onChange">

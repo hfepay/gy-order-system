@@ -57,7 +57,7 @@ Page({
     },
   gotoPay(){
     wx.navigateTo({
-      url: '/pages/order-pay/order-pay?orderId='+this.data.order.id,
+      url: '/pages/pay-wechat/pay-wechat?orderId='+this.data.order.id,
     })
   }
 })

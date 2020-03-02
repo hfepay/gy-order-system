@@ -1,5 +1,6 @@
 :host{
-    --black:#000000
+    --black:#000000;
+    --count-down-text-color:#D60000;
 }
 .order-status{
     font-weight: bold;

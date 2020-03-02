@@ -1,6 +1,11 @@
+:host{
+    --count-down-text-color:rgba(169,169,169,1);
+}
 .pay-time,.bussiness-info{
     font-size:26rpx;
     color:rgba(169,169,169,1);
+    display: flex;
+    justify-content: center;
 }
 .pay-money{
     font-size:80rpx;
