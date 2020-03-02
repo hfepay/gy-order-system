@@ -88,14 +88,16 @@ Page({
         })
   },
   setCanSubmit({limitType,limitValue}){
-    if(limitType || limitValue){
+    if(limitType && limitValue){
       const {afterDiscount} = this.data.moneyInfo
       const allFoodNum = this.data.allFoodNum
-      if(limitType > allFoodNum|| limitValue > afterDiscount){
+      // 0 按金额  1：按数量
+      if((limitType == 0 && limitValue > afterDiscount)
+            || (limitType == 1 && limitValue > allFoodNum)){
         this.setData({
           canSubmit: false
         })
-        return
+        return;
       }
     }
     this.setData({

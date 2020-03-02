@@ -7,7 +7,14 @@
         <view class="merchant-desc">
             <view class="merchant-name">{{merchant.businessName}}</view>
             <view class="merchant-sell-num">已售{{merchant.saledNum}}份</view>
-            <view class="merchant-meal-type">todo起送￥0  配送￥7</view>
+            <view class="merchant-meal-type">
+                <block wx:if="{{merchant.limitType}}">
+              起送
+              <text wx:if="{{merchant.limitType == 0}}">￥{{merchant.limitValue}}</text> 
+              <text wx:elif="{{merchant.limitType == 1}}">{{merchant.limitValue}}份</text> 
+            </block>
+              配送￥{{merchant.transportFee}}
+            </view>
         </view>
     </view>
     <van-cell-group>

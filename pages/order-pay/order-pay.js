@@ -145,34 +145,28 @@ Page({
           const cb = data.payType == PAY_TYPE_ENUM.WECHAT ? new Promise(resolve => {
             API.getPayInfo(orderId)
                 .then(info => {
-                  debugger
-                  const options = {
-                    timeStamp: '',
-                    nonceStr: '',
-                    package: '',
-                    signType: 'MD5',
-                    paySign: '',
-                    success (res) { },
-                    fail (res) { }
-                  }
+                  const { timeStamp, nonceStr, package, signType, paySign} = info
                   wx.requestPayment({
-                    ...info,
+                    timeStamp,
+                    nonceStr,
+                    package,
+                    signType,
+                    paySign,
                     'success':(res) =>{
-                      API.pay({orderId}).then(_ => {
-                        this.gotoOrder()
-                      })
+                      resolve(res)
                     },
                     'complete':(res) =>{
                       console.log("支付结果:",res)
                     }
                   })
                 })
-          }) : new Promise(resolve => resolve())
+          }) : null
           this.confirmOrder(orderId, cb)
         })
   },
   confirmOrder(orderId, fn){
-    fn.then(_ => {
+    fn = fn || new Promise(resolve => resolve())
+    fn.then(res => {
       API.pay({orderId}).then(_ => {
         this.gotoOrder()
       })

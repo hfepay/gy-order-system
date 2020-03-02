@@ -34,14 +34,14 @@
 <view>
     <view class="order-status">
         订单{{format.formatStatus(order.orderStatus)}}
-        <view class="pay-time">（剩余支付时间
+        <view class="pay-time" wx:if="{{order.difference}}">（剩余支付时间
         <van-count-down
-                  time="{{ 1000 * 60 * 15 }}"
+                  time="{{ order.difference }}"
                   format="mm 分 ss 秒"
           />
           )
         </view>
-        
+
     </view>
     <van-cell-group>
         <navigator url="/pages/feedback-order/feedback-order?orderId={{order.id}}&orderNo={{order.orderNo}}">

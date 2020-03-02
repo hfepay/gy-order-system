@@ -215,6 +215,12 @@ const API = {
           .then(res => resolve(res))
     })
   },
+  refund: (orderId) => {
+    return getPromiseInstance((resolve, reject) => {
+      request.post(`/pay/wechatRefund/${orderId}`)
+        .then(res => resolve(res))
+    })
+  },
 }
 
 
