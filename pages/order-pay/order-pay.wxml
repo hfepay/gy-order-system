@@ -78,6 +78,7 @@
     </van-cell-group>
 </view>
 <van-action-sheet
+        round="{{false}}"
         show="{{ showPayType }}"
         actions="{{ payTypeList }}"
         bind:close="onClose"

@@ -17,6 +17,7 @@
     font-weight:bold;
     color:white;
     box-sizing: border-box;
+    line-height: 22px;
 }
 .text.text_active{
     background-color: white;

@@ -1,5 +1,5 @@
 <!--component/hf-switch/hf-switch.wxml-->
 <view class="switch-container {{on?'active':'inactive'}}">
-    <cover-view class="text {{!on?'text_active':''}}" bindtap="onClick" data-value="{{false}}">{{inactiveText}}</cover-view>
-    <cover-view class="text {{on?'text_active':''}}" bindtap="onClick" data-value="{{true}}">{{activeText}}</cover-view>
+    <view class="text {{!on?'text_active':''}}" bindtap="onClick" data-value="{{false}}">{{inactiveText}}</view>
+    <view class="text {{on?'text_active':''}}" bindtap="onClick" data-value="{{true}}">{{activeText}}</view>
 </view>
