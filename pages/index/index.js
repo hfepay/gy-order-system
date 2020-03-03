@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 const API = require('../../utils/api')
+const { USER_STATUS } = require('../../contants/constants')
 const {formatTime} = require('../../utils/util')
 Page({
   data: {
@@ -85,6 +86,14 @@ Page({
     return this.data.timeList.find(item => item.selected).day
   },
   toMenuPage:function(e){
+    const userInfo = app.getUserInfo() || {}
+    if (userInfo.status == USER_STATUS.INACTIVE){
+      wx.showToast({
+        title: '您的账号当前处于冻结状态，无法下单',
+        icon: 'none'
+      })
+      return
+    }
     const { distributeType, distributeTime, isCutoff } = e.currentTarget.dataset.item
     const distributeDate = this.getSelectDay()
     wx.navigateTo({
