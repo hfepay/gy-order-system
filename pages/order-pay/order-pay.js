@@ -152,11 +152,23 @@ Page({
                     package: info.package,
                     signType,
                     paySign,
-                    'success':(res) =>{
+                    'success'(res){
                       resolve(res)
                     },
-                    'complete':(res) =>{
-                      console.log("支付结果:",res)
+                    'fail'(){
+                      wx.switchTab({
+                        url: '/pages/order/order',
+                        success(){
+                          setTimeout(_ => {
+                            wx.navigateTo({
+                              url: '/pages/order-detail/order-detail?id=' + orderId,
+                              success(res) {
+                                console.log('跳转结果:', res)
+                              }
+                            })
+                          }, 1000)
+                        }
+                      })
                     }
                   })
                 })

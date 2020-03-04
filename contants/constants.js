@@ -7,15 +7,14 @@ const MEAL_STATUS = {
     BOOKING: '1',
 }
 const PAY_TYPE_ENUM = {
-    'WECHAT': '1',
-    'OFFLINE': '2'
+    'OFFLIN': '1',
+    'WECHAT': '2'
 }
 //支付方式 1：微信支付,2:线下支付
 const PAY_TYPE = {
-    [PAY_TYPE_ENUM.WECHAT]: '微信支付',
-    [PAY_TYPE_ENUM.OFFLINE]: '线下支付'
+  '1': '线下支付',
+  '2': '微信支付',
 }
-
 //订单查询类型 unfinished 待完成 done 已完成 refund 退款
 const ORDER_QUERY_TYPE_ENUM = {
     UNFINISHED:'unfinished',
@@ -23,9 +22,9 @@ const ORDER_QUERY_TYPE_ENUM = {
     REFUND:'refund',
 }
 const ORDER_QUERY_TYPE = {
-    [ORDER_QUERY_TYPE_ENUM.unfinished]:'未完成',
-    [ORDER_QUERY_TYPE_ENUM.DONE]:'已完成',
-    [ORDER_QUERY_TYPE_ENUM.REFUND]:'退款',
+  unfinished:'未完成',
+  done:'已完成',
+  refund:'退款',
 }
 const USER_STATUS = {
   INACTIVE:'0',
