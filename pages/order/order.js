@@ -17,11 +17,7 @@ Page({
     activeTab: ORDER_QUERY_TYPE_ENUM.UNFINISHED
   },
   onLoad: function (options) {
-      // this.initTabs(true)
-      this.setData({
-        orderList: []
-      })
-      this.getOrders()
+      this.getOrders(true)
   },
   onReachBottom(){
     this.getOrders()
