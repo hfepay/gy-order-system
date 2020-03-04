@@ -18,6 +18,9 @@ Page({
   },
   onLoad: function (options) {
       // this.initTabs(true)
+      this.setData({
+        orderList: []
+      })
       this.getOrders()
   },
   onReachBottom(){

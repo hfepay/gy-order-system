@@ -159,14 +159,9 @@ Page({
                       wx.switchTab({
                         url: '/pages/order/order',
                         success(){
-                          setTimeout(_ => {
-                            wx.navigateTo({
-                              url: '/pages/order-detail/order-detail?id=' + orderId,
-                              success(res) {
-                                console.log('跳转结果:', res)
-                              }
-                            })
-                          }, 1000)
+                          var page = getCurrentPages().pop();
+                          if (page == undefined || page == null) return
+                          page.onLoad();
                         }
                       })
                     }
