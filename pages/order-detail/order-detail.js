@@ -46,14 +46,9 @@ Page({
         )
   },
     gotoOrder(){
-        wx.switchTab({
-            url: '/pages/order/order',
-            success: function(e) {
-                var page = getCurrentPages().pop();
-                if (page == undefined || page == null) return
-                page.onLoad();
-            }
-        })
+      wx.reLaunch({
+        url: '/pages/order/order',
+      })
     },
   gotoPay(){
     wx.navigateTo({

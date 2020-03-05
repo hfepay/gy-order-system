@@ -45,12 +45,14 @@ Page({
     const  businessMobile = merchant.mobile
     const  orderBusName = merchant.businessName
     const  businessId = merchant.id
+    const memberMobile = app.getUserInfo().mobile
     const data = {
       ...orderDetail,
       orderBusName,
       businessAddress,
       businessMobile,
       businessId,
+      memberMobile,
       transportType:DELIVERY_TYPE.DELIVERY,
       ...params
     }
