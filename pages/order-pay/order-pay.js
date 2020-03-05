@@ -156,13 +156,8 @@ Page({
                       resolve(res)
                     },
                     'fail'(){
-                      wx.switchTab({
+                      wx.reLaunch({
                         url: '/pages/order/order',
-                        success(){
-                          var page = getCurrentPages().pop();
-                          if (page == undefined || page == null) return
-                          page.onLoad();
-                        }
                       })
                     }
                   })

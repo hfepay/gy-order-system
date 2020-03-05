@@ -37,6 +37,7 @@ Page({
       })
   },
   getOrders(reset){
+    if (reset) this.initPage()
     if(this.data.queryParams.current == this.data.queryParams.pages)return
       this.setData({
           loading: true
@@ -60,11 +61,14 @@ Page({
   getQueryParams(){
     return this.data.queryParams
   },
+  initPage(){
+    this.data.queryParams.current = 0
+    this.data.queryParams.pages = 1
+  },
   onTabClick(e){
       const {name} = e.detail
       this.data.queryParams.type = name
-      this.data.queryParams.current = 0
-      this.data.queryParams.pages = 1
+      this.initPage()
       this.getOrders(true)
   },
 })
