@@ -1,7 +1,7 @@
 .menu-container{
     margin-left: 32rpx;
     margin-right: 32rpx;
-    margin-bottom: 118rpx;
+    margin-bottom: 162rpx;
 }
 .merchant-item{
     height: 258rpx;
