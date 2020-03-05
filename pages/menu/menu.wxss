@@ -1,7 +1,10 @@
+:host{
+    --submit-bar-height: 142rpx;
+}
 .menu-container{
     margin-left: 32rpx;
     margin-right: 32rpx;
-    margin-bottom: 162rpx;
+    margin-bottom: calc(var(--submit-bar-height) + 20rpx);
 }
 .merchant-item{
     height: 258rpx;
@@ -40,7 +43,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    height: 142rpx;
+    height: var(--submit-bar-height);
     color: white;
     padding: 0 32rpx;
     z-index: 111;
@@ -87,7 +90,7 @@
     display: flex;
 }
 .commodity-list{
-    margin-bottom: 142rpx;
+    margin-bottom: var(--submit-bar-height);
 }
 .sold-out{
     font-size:28rpx;
