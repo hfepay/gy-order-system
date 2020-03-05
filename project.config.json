@@ -26,7 +26,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
 	"appid": "wx8546281a7af820c2",
-	"projectname": "gy-order-system",
+	"projectname": "gy-orderingfood-miniprogram",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

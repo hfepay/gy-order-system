@@ -87,7 +87,7 @@
 <view class="submit-bar bg-primary">
     <view class="total-price-info">
         <text class="total-price__text">实付:</text>
-        <text class="total-price__num">￥{{moneyInfo.payAmount}}元</text><text class="total-price__original">{{moneyInfo.beforeDiscount}}</text>
+        <text class="total-price__num">￥{{moneyInfo.payAmount}}元</text><text class="total-price__original">{{moneyInfo.totalAmount}}</text>
     </view>
     <view class="">
         <van-button bindtap="submit" custom-class="submit-btn" round size="small" plain type="primary">提交订单</van-button>

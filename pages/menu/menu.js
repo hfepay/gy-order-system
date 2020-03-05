@@ -88,11 +88,11 @@ Page({
         })
   },
   setCanSubmit({limitType,limitValue}){
-    if(limitType && limitValue){
-      const {afterDiscount} = this.data.moneyInfo
+    if((limitType || limitType ==0 ) && limitValue){
+      const {payAmount} = this.data.moneyInfo
       const allFoodNum = this.data.allFoodNum
       // 0 按金额  1：按数量
-      if((limitType == 0 && limitValue > afterDiscount)
+      if((limitType == 0 && limitValue > payAmount)
             || (limitType == 1 && limitValue > allFoodNum)){
         this.setData({
           canSubmit: false

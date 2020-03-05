@@ -33,7 +33,7 @@
         <block wx:else>
             <van-cell title="配送时间" value-class="fs28" value="{{order.distributionDate}} {{food.formatDistributeType(order.distributionType)}} {{order.distributionTime}}"/>
         </block>
-        <van-cell title="收款方式" value-class="fs28" value="{{format.formatPayType(order.payType)}}"/>
+        <van-cell title="支付方式" value-class="fs28" value="{{format.formatPayType(order.payType)}}"/>
         <image mode="aspectFit" wx:if="{{order.orderStatus > 6 && order.orderStatus < 11}}" src="{{format.formatStepImg(order.orderStatus)}}" class="step-img"></image>
         </van-cell-group>
     <van-cell-group>
