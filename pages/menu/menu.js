@@ -45,9 +45,22 @@ Page({
     }
     this.initMerchant()
   },
+  validateStock(food, foodDetail){
+    const {id, stock} = food
+    const res = foodDetail.find(item => item.id == id) || {foodNum:0}
+    return stock > res.foodNum
+  },
   addFood(e){
     const {food} = e.currentTarget.dataset
     const foodDetail = this.data.orderDetail.foodDetail
+    // 判断数量是否大于库存
+    if (!this.validateStock(food, foodDetail)){
+      wx.showToast({
+        title: '库存不足',
+        icon: 'none'
+      })
+      return 
+    }
     // 判断是新增数量还是新增记录
     let index;
     foodDetail.find((item,i) => {

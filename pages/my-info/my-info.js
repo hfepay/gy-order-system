@@ -58,6 +58,7 @@ Page({
             title: '修改成功',
             icon: 'none',
           })
+          app.globalData.userInfo.mobile = mobile
         })
   },
   validateIdcard(){

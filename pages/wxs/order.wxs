@@ -22,14 +22,14 @@ function formatStatus(type){
         case 10:
             return '退款失败';
         case 11:
-            return '退款不通';
+            return '退款不通过';
     }
 }
 function formatPayType(type) {
-    switch (type) {
-        case "1":
+    switch (+type) {
+        case 1:
         return '线下支付';
-        case "2":
+        case 2:
         return '微信支付';
     }
 }
