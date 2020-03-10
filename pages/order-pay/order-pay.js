@@ -142,6 +142,7 @@ Page({
   submit(){
     if(!this.validateForm())return
     const data = this.getSubmitData()
+    const _this = this
     API.addOrder(data)
         .then(orderId => {
           const cb = data.payType == PAY_TYPE_ENUM.WECHAT ? new Promise(resolve => {
@@ -158,9 +159,10 @@ Page({
                       resolve(res)
                     },
                     'fail'(){
-                      wx.reLaunch({
-                        url: '/pages/order/order',
-                      })
+                      _this.gotoPayResult()
+                    },
+                    complete(res){
+                      console.log("支付结果:", res)
                     }
                   })
                 })
@@ -179,6 +181,11 @@ Page({
   gotoPayResult(orderId){
     wx.switchTab({
       url: '/pages/order/order',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return
+        page.onLoad();
+      }
     })
   },
   selectPayType(){

@@ -1,8 +1,7 @@
 const env = 'dev'
 const configs = {
   dev: {
-    BASEURL: 'https://zhair.hfsmrz.cn/fowebserver',
-    imgUrl: '',
+    BASEURL: 'https://zhair.hfsmrz.cn/fowebserver'
   },
   pro: {
     BASEURL:"https://mp.gzairports.com/fowebserver"
